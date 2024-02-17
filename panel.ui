@@ -26,15 +26,30 @@
       <height>1000</height>
      </rect>
     </property>
+    <property name="tabletTracking">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true">*{background-color: white; }</string>
     </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Triangular</enum>
+    </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
+    </property>
+    <property name="tabsClosable">
+     <bool>true</bool>
+    </property>
+    <property name="tabBarAutoHide">
+     <bool>false</bool>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>Giderler</string>
      </attribute>
      <widget class="QComboBox" name="ddm_gider_SirketSec">
       <property name="geometry">
@@ -129,12 +144,25 @@
         <pointsize>16</pointsize>
        </font>
       </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="styleSheet">
        <string notr="true">QLineEdit {
     border: 2px solid black; /* Kenar rengi */
     border-radius: 10px; /* Kenarları oval yapar */
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
+}
+
+QLineEdit::placeholder {
+    color: rgba(1, 1, 1, 0.01); /* Placeholder metin rengi ve opaklığı */
 }</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Ali Cambaz</string>
       </property>
      </widget>
      <widget class="QLabel" name="lbMeslek_3">
@@ -189,6 +217,9 @@
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
       </property>
+      <property name="placeholderText">
+       <string>25987425564</string>
+      </property>
      </widget>
      <widget class="QLabel" name="lbMeslek_4">
       <property name="geometry">
@@ -242,6 +273,9 @@
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
       </property>
+      <property name="placeholderText">
+       <string>Axa Sigorta</string>
+      </property>
      </widget>
      <widget class="QLabel" name="lbMeslek_5">
       <property name="geometry">
@@ -294,6 +328,9 @@
     border-radius: 10px; /* Kenarları oval yapar */
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
+      </property>
+      <property name="placeholderText">
+       <string>254698AE</string>
       </property>
      </widget>
      <widget class="QLabel" name="lbMeslek_6">
@@ -588,6 +625,9 @@
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
       </property>
+      <property name="placeholderText">
+       <string>HK</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="ln_gider_OdemeTutari">
       <property name="geometry">
@@ -610,6 +650,9 @@
     border-radius: 10px; /* Kenarları oval yapar */
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
+      </property>
+      <property name="placeholderText">
+       <string>2500</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="ln_gider_magdurPlaka">
@@ -634,6 +677,9 @@
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
       </property>
+      <property name="placeholderText">
+       <string>01 ABC 001</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="ln_gider_STKbasvuruNo">
       <property name="geometry">
@@ -656,6 +702,9 @@
     border-radius: 10px; /* Kenarları oval yapar */
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
+      </property>
+      <property name="placeholderText">
+       <string>256985548EQ</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="ln_gider_BilirkisiUcreti">
@@ -680,6 +729,9 @@
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
       </property>
+      <property name="placeholderText">
+       <string>7542</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="ln_gider_STKUcreti">
       <property name="geometry">
@@ -703,6 +755,9 @@
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
       </property>
+      <property name="placeholderText">
+       <string>69851</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="ln_gider_Diger">
       <property name="geometry">
@@ -725,6 +780,9 @@
     border-radius: 10px; /* Kenarları oval yapar */
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
+      </property>
+      <property name="placeholderText">
+       <string>2652</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_gider_Ekle">
@@ -8560,6 +8618,9 @@
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
       </property>
+      <property name="placeholderText">
+       <string>Açıklama </string>
+      </property>
      </widget>
      <widget class="QComboBox" name="ddm_gider_kazaTarihi_yil">
       <property name="geometry">
@@ -9292,7 +9353,7 @@
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Gelirler</string>
      </attribute>
      <widget class="QTableWidget" name="tbl_gelir">
       <property name="enabled">
@@ -17305,6 +17366,9 @@
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
       </property>
+      <property name="placeholderText">
+       <string>Açıklama</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="ln_gelir_miktar">
       <property name="geometry">
@@ -17327,6 +17391,9 @@
     border-radius: 10px; /* Kenarları oval yapar */
     padding: 5px; /* İçeriği kenarlardan uzaklaştırır */
 }</string>
+      </property>
+      <property name="placeholderText">
+       <string>56852</string>
       </property>
      </widget>
      <widget class="QPushButton" name="ln_gelir_baslk">
@@ -17435,7 +17502,7 @@
        <string>Açıklama</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="gunluk_toplamgiren_2">
+     <widget class="QLineEdit" name="ln_toplam_gelir">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -17537,7 +17604,7 @@
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
-      <string>Page</string>
+      <string>Net Kar</string>
      </attribute>
      <widget class="QPushButton" name="btn_gelir_sil_7">
       <property name="geometry">
@@ -17767,6 +17834,44 @@
        <bool>false</bool>
       </property>
      </widget>
+     <widget class="QPushButton" name="page_yenile">
+      <property name="geometry">
+       <rect>
+        <x>890</x>
+        <y>130</y>
+        <width>150</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+        <underline>false</underline>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::DefaultContextMenu</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;}</string>
+      </property>
+      <property name="text">
+       <string>Yenile</string>
+      </property>
+      <property name="autoDefault">
+       <bool>true</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -17831,7 +17936,7 @@
   <tabstop>ln_gider_toplamView</tabstop>
   <tabstop>tbl_gider</tabstop>
   <tabstop>btn_gider_ara</tabstop>
-  <tabstop>gunluk_toplamgiren_2</tabstop>
+  <tabstop>ln_toplam_gelir</tabstop>
   <tabstop>btn_gelir_sil</tabstop>
  </tabstops>
  <resources/>
