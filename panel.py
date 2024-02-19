@@ -16,6 +16,9 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
         MainWindow.resize(1920, 1000)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../../../Users/chubu/Desktop/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
@@ -29,25 +32,6 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
-        self.ddm_gider_SirketSec = QtWidgets.QComboBox(self.tab)
-        self.ddm_gider_SirketSec.setGeometry(QtCore.QRect(10, 10, 211, 50))
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
-        font.setWeight(50)
-        font.setKerning(True)
-        self.ddm_gider_SirketSec.setFont(font)
-        self.ddm_gider_SirketSec.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.ddm_gider_SirketSec.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;\n"
-" border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */}")
-        self.ddm_gider_SirketSec.setObjectName("ddm_gider_SirketSec")
-        self.ddm_gider_SirketSec.addItem("")
-        self.ddm_gider_SirketSec.addItem("")
-        self.ddm_gider_SirketSec.addItem("")
-        self.ddm_gider_SirketSec.addItem("")
         self.lbMeslek_2 = QtWidgets.QLabel(self.tab)
         self.lbMeslek_2.setGeometry(QtCore.QRect(10, 70, 211, 50))
         font = QtGui.QFont()
@@ -81,124 +65,8 @@ class Ui_MainWindow(object):
 "}")
         self.ln_gider_isim.setText("")
         self.ln_gider_isim.setObjectName("ln_gider_isim")
-        self.lbMeslek_3 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_3.setGeometry(QtCore.QRect(10, 130, 211, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbMeslek_3.setFont(font)
-        self.lbMeslek_3.setStyleSheet("QLabel {\n"
-"  background-color: rgb(124, 73, 72);\n"
-"\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
-"}")
-        self.lbMeslek_3.setObjectName("lbMeslek_3")
-        self.ln_gider_tc = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_tc.setGeometry(QtCore.QRect(230, 130, 261, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(16)
-        self.ln_gider_tc.setFont(font)
-        self.ln_gider_tc.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid black; /* Kenar rengi */\n"
-"    border-radius: 10px; /* Kenarları oval yapar */\n"
-"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
-"}")
-        self.ln_gider_tc.setObjectName("ln_gider_tc")
-        self.lbMeslek_4 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_4.setGeometry(QtCore.QRect(10, 190, 211, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbMeslek_4.setFont(font)
-        self.lbMeslek_4.setStyleSheet("QLabel {\n"
-"  background-color: rgb(124, 73, 72);\n"
-"\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
-"}")
-        self.lbMeslek_4.setObjectName("lbMeslek_4")
-        self.ln_gider_sigortasirketi = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_sigortasirketi.setGeometry(QtCore.QRect(230, 190, 261, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(16)
-        self.ln_gider_sigortasirketi.setFont(font)
-        self.ln_gider_sigortasirketi.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid black; /* Kenar rengi */\n"
-"    border-radius: 10px; /* Kenarları oval yapar */\n"
-"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
-"}")
-        self.ln_gider_sigortasirketi.setObjectName("ln_gider_sigortasirketi")
-        self.lbMeslek_5 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_5.setGeometry(QtCore.QRect(10, 250, 211, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbMeslek_5.setFont(font)
-        self.lbMeslek_5.setStyleSheet("QLabel {\n"
-"  background-color: rgb(124, 73, 72);\n"
-"\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
-"}")
-        self.lbMeslek_5.setObjectName("lbMeslek_5")
-        self.ln_gider_policeno = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_policeno.setGeometry(QtCore.QRect(230, 250, 261, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(16)
-        self.ln_gider_policeno.setFont(font)
-        self.ln_gider_policeno.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid black; /* Kenar rengi */\n"
-"    border-radius: 10px; /* Kenarları oval yapar */\n"
-"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
-"}")
-        self.ln_gider_policeno.setObjectName("ln_gider_policeno")
-        self.lbMeslek_6 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_6.setGeometry(QtCore.QRect(10, 310, 211, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbMeslek_6.setFont(font)
-        self.lbMeslek_6.setStyleSheet("QLabel {\n"
-"  background-color: rgb(124, 73, 72);\n"
-"\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
-"}")
-        self.lbMeslek_6.setObjectName("lbMeslek_6")
-        self.lbMeslek_7 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_7.setGeometry(QtCore.QRect(10, 370, 211, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbMeslek_7.setFont(font)
-        self.lbMeslek_7.setStyleSheet("QLabel {\n"
-"  background-color: rgb(124, 73, 72);\n"
-"\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
-"}")
-        self.lbMeslek_7.setObjectName("lbMeslek_7")
         self.lbMeslek_8 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_8.setGeometry(QtCore.QRect(10, 430, 211, 50))
+        self.lbMeslek_8.setGeometry(QtCore.QRect(10, 150, 211, 50))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         font.setPointSize(18)
@@ -214,7 +82,7 @@ class Ui_MainWindow(object):
 "}")
         self.lbMeslek_8.setObjectName("lbMeslek_8")
         self.lbMeslek_9 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_9.setGeometry(QtCore.QRect(10, 490, 211, 50))
+        self.lbMeslek_9.setGeometry(QtCore.QRect(10, 250, 211, 50))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         font.setPointSize(18)
@@ -229,100 +97,8 @@ class Ui_MainWindow(object):
 "    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
 "}")
         self.lbMeslek_9.setObjectName("lbMeslek_9")
-        self.lbMeslek_10 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_10.setGeometry(QtCore.QRect(10, 550, 211, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbMeslek_10.setFont(font)
-        self.lbMeslek_10.setStyleSheet("QLabel {\n"
-"  background-color: rgb(124, 73, 72);\n"
-"\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
-"}")
-        self.lbMeslek_10.setObjectName("lbMeslek_10")
-        self.lbMeslek_11 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_11.setGeometry(QtCore.QRect(10, 610, 211, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbMeslek_11.setFont(font)
-        self.lbMeslek_11.setStyleSheet("QLabel {\n"
-"  background-color: rgb(124, 73, 72);\n"
-"\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
-"}")
-        self.lbMeslek_11.setObjectName("lbMeslek_11")
-        self.lbMeslek_12 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_12.setGeometry(QtCore.QRect(10, 670, 211, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbMeslek_12.setFont(font)
-        self.lbMeslek_12.setStyleSheet("QLabel {\n"
-"  background-color: rgb(124, 73, 72);\n"
-"\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
-"}")
-        self.lbMeslek_12.setObjectName("lbMeslek_12")
-        self.lbMeslek_13 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_13.setGeometry(QtCore.QRect(10, 730, 211, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbMeslek_13.setFont(font)
-        self.lbMeslek_13.setStyleSheet("QLabel {\n"
-"  background-color: rgb(124, 73, 72);\n"
-"\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
-"}")
-        self.lbMeslek_13.setObjectName("lbMeslek_13")
-        self.lbMeslek_14 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_14.setGeometry(QtCore.QRect(10, 790, 211, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.lbMeslek_14.setFont(font)
-        self.lbMeslek_14.setStyleSheet("QLabel {\n"
-"  background-color: rgb(124, 73, 72);\n"
-"\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
-"}")
-        self.lbMeslek_14.setObjectName("lbMeslek_14")
-        self.ln_gider_hkDk = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_hkDk.setGeometry(QtCore.QRect(230, 310, 261, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(16)
-        self.ln_gider_hkDk.setFont(font)
-        self.ln_gider_hkDk.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid black; /* Kenar rengi */\n"
-"    border-radius: 10px; /* Kenarları oval yapar */\n"
-"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
-"}")
-        self.ln_gider_hkDk.setObjectName("ln_gider_hkDk")
         self.ln_gider_OdemeTutari = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_OdemeTutari.setGeometry(QtCore.QRect(230, 490, 261, 50))
+        self.ln_gider_OdemeTutari.setGeometry(QtCore.QRect(230, 250, 261, 50))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         font.setPointSize(16)
@@ -333,66 +109,6 @@ class Ui_MainWindow(object):
 "    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
 "}")
         self.ln_gider_OdemeTutari.setObjectName("ln_gider_OdemeTutari")
-        self.ln_gider_magdurPlaka = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_magdurPlaka.setGeometry(QtCore.QRect(230, 370, 261, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(16)
-        self.ln_gider_magdurPlaka.setFont(font)
-        self.ln_gider_magdurPlaka.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid black; /* Kenar rengi */\n"
-"    border-radius: 10px; /* Kenarları oval yapar */\n"
-"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
-"}")
-        self.ln_gider_magdurPlaka.setObjectName("ln_gider_magdurPlaka")
-        self.ln_gider_STKbasvuruNo = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_STKbasvuruNo.setGeometry(QtCore.QRect(230, 550, 261, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(16)
-        self.ln_gider_STKbasvuruNo.setFont(font)
-        self.ln_gider_STKbasvuruNo.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid black; /* Kenar rengi */\n"
-"    border-radius: 10px; /* Kenarları oval yapar */\n"
-"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
-"}")
-        self.ln_gider_STKbasvuruNo.setObjectName("ln_gider_STKbasvuruNo")
-        self.ln_gider_BilirkisiUcreti = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_BilirkisiUcreti.setGeometry(QtCore.QRect(230, 730, 261, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(16)
-        self.ln_gider_BilirkisiUcreti.setFont(font)
-        self.ln_gider_BilirkisiUcreti.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid black; /* Kenar rengi */\n"
-"    border-radius: 10px; /* Kenarları oval yapar */\n"
-"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
-"}")
-        self.ln_gider_BilirkisiUcreti.setObjectName("ln_gider_BilirkisiUcreti")
-        self.ln_gider_STKUcreti = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_STKUcreti.setGeometry(QtCore.QRect(230, 670, 261, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(16)
-        self.ln_gider_STKUcreti.setFont(font)
-        self.ln_gider_STKUcreti.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid black; /* Kenar rengi */\n"
-"    border-radius: 10px; /* Kenarları oval yapar */\n"
-"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
-"}")
-        self.ln_gider_STKUcreti.setObjectName("ln_gider_STKUcreti")
-        self.ln_gider_Diger = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_Diger.setGeometry(QtCore.QRect(230, 790, 261, 50))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift")
-        font.setPointSize(16)
-        self.ln_gider_Diger.setFont(font)
-        self.ln_gider_Diger.setStyleSheet("QLineEdit {\n"
-"    border: 2px solid black; /* Kenar rengi */\n"
-"    border-radius: 10px; /* Kenarları oval yapar */\n"
-"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
-"}")
-        self.ln_gider_Diger.setObjectName("ln_gider_Diger")
         self.btn_gider_Ekle = QtWidgets.QPushButton(self.tab)
         self.btn_gider_Ekle.setGeometry(QtCore.QRect(540, 830, 150, 41))
         font = QtGui.QFont()
@@ -430,7 +146,7 @@ class Ui_MainWindow(object):
         self.tbl_gider.setStyleSheet(" background-color: rgb(243, 228, 185);")
         self.tbl_gider.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tbl_gider.setRowCount(7500)
-        self.tbl_gider.setColumnCount(16)
+        self.tbl_gider.setColumnCount(5)
         self.tbl_gider.setObjectName("tbl_gider")
         self.tbl_gider.horizontalHeader().setVisible(False)
         self.tbl_gider.horizontalHeader().setCascadingSectionResizes(False)
@@ -510,7 +226,7 @@ class Ui_MainWindow(object):
         self.btn_gider_ara.setFlat(False)
         self.btn_gider_ara.setObjectName("btn_gider_ara")
         self.lbMeslek_15 = QtWidgets.QLabel(self.tab)
-        self.lbMeslek_15.setGeometry(QtCore.QRect(10, 850, 211, 50))
+        self.lbMeslek_15.setGeometry(QtCore.QRect(10, 370, 211, 50))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         font.setPointSize(18)
@@ -526,7 +242,7 @@ class Ui_MainWindow(object):
 "}")
         self.lbMeslek_15.setObjectName("lbMeslek_15")
         self.ln_gider_aciklama = QtWidgets.QLineEdit(self.tab)
-        self.ln_gider_aciklama.setGeometry(QtCore.QRect(230, 850, 261, 50))
+        self.ln_gider_aciklama.setGeometry(QtCore.QRect(230, 370, 261, 221))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         font.setPointSize(16)
@@ -537,8 +253,8 @@ class Ui_MainWindow(object):
 "    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
 "}")
         self.ln_gider_aciklama.setObjectName("ln_gider_aciklama")
-        self.ddm_gider_kazaTarihi_yil = QtWidgets.QComboBox(self.tab)
-        self.ddm_gider_kazaTarihi_yil.setGeometry(QtCore.QRect(230, 430, 101, 50))
+        self.ddm_gider_yil = QtWidgets.QComboBox(self.tab)
+        self.ddm_gider_yil.setGeometry(QtCore.QRect(230, 150, 101, 50))
         font = QtGui.QFont()
         font.setPointSize(18)
         font.setBold(False)
@@ -546,25 +262,25 @@ class Ui_MainWindow(object):
         font.setUnderline(False)
         font.setWeight(50)
         font.setKerning(True)
-        self.ddm_gider_kazaTarihi_yil.setFont(font)
-        self.ddm_gider_kazaTarihi_yil.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.ddm_gider_kazaTarihi_yil.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;\n"
+        self.ddm_gider_yil.setFont(font)
+        self.ddm_gider_yil.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.ddm_gider_yil.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;\n"
 " border-radius: 10px;\n"
 "    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */}")
-        self.ddm_gider_kazaTarihi_yil.setObjectName("ddm_gider_kazaTarihi_yil")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_yil.addItem("")
-        self.ddm_gider_kazaTarihi_ay = QtWidgets.QComboBox(self.tab)
-        self.ddm_gider_kazaTarihi_ay.setGeometry(QtCore.QRect(340, 430, 71, 50))
+        self.ddm_gider_yil.setObjectName("ddm_gider_yil")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_yil.addItem("")
+        self.ddm_gider_ay = QtWidgets.QComboBox(self.tab)
+        self.ddm_gider_ay.setGeometry(QtCore.QRect(340, 150, 71, 50))
         font = QtGui.QFont()
         font.setPointSize(18)
         font.setBold(False)
@@ -572,27 +288,27 @@ class Ui_MainWindow(object):
         font.setUnderline(False)
         font.setWeight(50)
         font.setKerning(True)
-        self.ddm_gider_kazaTarihi_ay.setFont(font)
-        self.ddm_gider_kazaTarihi_ay.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.ddm_gider_kazaTarihi_ay.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;\n"
+        self.ddm_gider_ay.setFont(font)
+        self.ddm_gider_ay.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.ddm_gider_ay.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;\n"
 " border-radius: 10px;\n"
 "    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */}")
-        self.ddm_gider_kazaTarihi_ay.setObjectName("ddm_gider_kazaTarihi_ay")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_ay.addItem("")
-        self.ddm_gider_kazaTarihi_gun = QtWidgets.QComboBox(self.tab)
-        self.ddm_gider_kazaTarihi_gun.setGeometry(QtCore.QRect(420, 430, 71, 50))
+        self.ddm_gider_ay.setObjectName("ddm_gider_ay")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_ay.addItem("")
+        self.ddm_gider_gun = QtWidgets.QComboBox(self.tab)
+        self.ddm_gider_gun.setGeometry(QtCore.QRect(420, 150, 71, 50))
         font = QtGui.QFont()
         font.setPointSize(18)
         font.setBold(False)
@@ -600,145 +316,44 @@ class Ui_MainWindow(object):
         font.setUnderline(False)
         font.setWeight(50)
         font.setKerning(True)
-        self.ddm_gider_kazaTarihi_gun.setFont(font)
-        self.ddm_gider_kazaTarihi_gun.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.ddm_gider_kazaTarihi_gun.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;\n"
+        self.ddm_gider_gun.setFont(font)
+        self.ddm_gider_gun.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.ddm_gider_gun.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;\n"
 " border-radius: 10px;\n"
 "    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */}")
-        self.ddm_gider_kazaTarihi_gun.setObjectName("ddm_gider_kazaTarihi_gun")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_kazaTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun = QtWidgets.QComboBox(self.tab)
-        self.ddm_gider_stkBasvuruTarihi_gun.setGeometry(QtCore.QRect(420, 610, 71, 50))
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
-        font.setWeight(50)
-        font.setKerning(True)
-        self.ddm_gider_stkBasvuruTarihi_gun.setFont(font)
-        self.ddm_gider_stkBasvuruTarihi_gun.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.ddm_gider_stkBasvuruTarihi_gun.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;\n"
-" border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */}")
-        self.ddm_gider_stkBasvuruTarihi_gun.setObjectName("ddm_gider_stkBasvuruTarihi_gun")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_gun.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay = QtWidgets.QComboBox(self.tab)
-        self.ddm_gider_stkBasvuruTarihi_ay.setGeometry(QtCore.QRect(340, 610, 71, 50))
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
-        font.setWeight(50)
-        font.setKerning(True)
-        self.ddm_gider_stkBasvuruTarihi_ay.setFont(font)
-        self.ddm_gider_stkBasvuruTarihi_ay.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.ddm_gider_stkBasvuruTarihi_ay.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;\n"
-" border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */}")
-        self.ddm_gider_stkBasvuruTarihi_ay.setObjectName("ddm_gider_stkBasvuruTarihi_ay")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_ay.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil = QtWidgets.QComboBox(self.tab)
-        self.ddm_gider_stkBasvuruTarihi_yil.setGeometry(QtCore.QRect(230, 610, 91, 50))
-        font = QtGui.QFont()
-        font.setPointSize(18)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
-        font.setWeight(50)
-        font.setKerning(True)
-        self.ddm_gider_stkBasvuruTarihi_yil.setFont(font)
-        self.ddm_gider_stkBasvuruTarihi_yil.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.ddm_gider_stkBasvuruTarihi_yil.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;\n"
-" border-radius: 10px;\n"
-"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */}")
-        self.ddm_gider_stkBasvuruTarihi_yil.setObjectName("ddm_gider_stkBasvuruTarihi_yil")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
-        self.ddm_gider_stkBasvuruTarihi_yil.addItem("")
+        self.ddm_gider_gun.setObjectName("ddm_gider_gun")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
+        self.ddm_gider_gun.addItem("")
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -758,7 +373,7 @@ class Ui_MainWindow(object):
         self.tbl_gelir.setStyleSheet(" background-color: rgb(243, 228, 185);")
         self.tbl_gelir.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tbl_gelir.setRowCount(7500)
-        self.tbl_gelir.setColumnCount(3)
+        self.tbl_gelir.setColumnCount(4)
         self.tbl_gelir.setObjectName("tbl_gelir")
         self.tbl_gelir.horizontalHeader().setVisible(False)
         self.tbl_gelir.horizontalHeader().setCascadingSectionResizes(False)
@@ -1120,6 +735,1048 @@ class Ui_MainWindow(object):
         self.page_yenile.setFlat(False)
         self.page_yenile.setObjectName("page_yenile")
         self.tabWidget.addTab(self.tab_3, "")
+        self.tab_4 = QtWidgets.QWidget()
+        self.tab_4.setObjectName("tab_4")
+        self.btn_cansever_ekle = QtWidgets.QPushButton(self.tab_4)
+        self.btn_cansever_ekle.setGeometry(QtCore.QRect(700, 880, 150, 41))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        self.btn_cansever_ekle.setFont(font)
+        self.btn_cansever_ekle.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.btn_cansever_ekle.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;}")
+        self.btn_cansever_ekle.setAutoDefault(True)
+        self.btn_cansever_ekle.setDefault(False)
+        self.btn_cansever_ekle.setFlat(False)
+        self.btn_cansever_ekle.setObjectName("btn_cansever_ekle")
+        self.tbl_cansever = QtWidgets.QTableWidget(self.tab_4)
+        self.tbl_cansever.setEnabled(True)
+        self.tbl_cansever.setGeometry(QtCore.QRect(680, 10, 1221, 851))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tbl_cansever.sizePolicy().hasHeightForWidth())
+        self.tbl_cansever.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.tbl_cansever.setFont(font)
+        self.tbl_cansever.setMouseTracking(True)
+        self.tbl_cansever.setTabletTracking(True)
+        self.tbl_cansever.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.tbl_cansever.setWhatsThis("")
+        self.tbl_cansever.setStyleSheet(" background-color: rgb(243, 228, 185);")
+        self.tbl_cansever.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tbl_cansever.setRowCount(7500)
+        self.tbl_cansever.setColumnCount(16)
+        self.tbl_cansever.setObjectName("tbl_cansever")
+        self.tbl_cansever.horizontalHeader().setVisible(False)
+        self.tbl_cansever.horizontalHeader().setCascadingSectionResizes(False)
+        self.tbl_cansever.horizontalHeader().setDefaultSectionSize(87)
+        self.btn_ara_cansever = QtWidgets.QPushButton(self.tab_4)
+        self.btn_ara_cansever.setGeometry(QtCore.QRect(1320, 870, 81, 41))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        self.btn_ara_cansever.setFont(font)
+        self.btn_ara_cansever.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.btn_ara_cansever.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;}")
+        self.btn_ara_cansever.setAutoDefault(True)
+        self.btn_ara_cansever.setDefault(False)
+        self.btn_ara_cansever.setFlat(False)
+        self.btn_ara_cansever.setObjectName("btn_ara_cansever")
+        self.ln_arama_cansever = QtWidgets.QLineEdit(self.tab_4)
+        self.ln_arama_cansever.setGeometry(QtCore.QRect(1050, 870, 261, 50))
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_arama_cansever.setFont(font)
+        self.ln_arama_cansever.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_arama_cansever.setObjectName("ln_arama_cansever")
+        self.layoutWidget = QtWidgets.QWidget(self.tab_4)
+        self.layoutWidget.setGeometry(QtCore.QRect(10, 10, 464, 921))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.lbSoyisim_3 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_3.setFont(font)
+        self.lbSoyisim_3.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_3.setObjectName("lbSoyisim_3")
+        self.verticalLayout.addWidget(self.lbSoyisim_3)
+        self.lbSoyisim_17 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_17.setFont(font)
+        self.lbSoyisim_17.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_17.setObjectName("lbSoyisim_17")
+        self.verticalLayout.addWidget(self.lbSoyisim_17)
+        self.lbSoyisim_4 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_4.setFont(font)
+        self.lbSoyisim_4.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_4.setObjectName("lbSoyisim_4")
+        self.verticalLayout.addWidget(self.lbSoyisim_4)
+        self.lbSoyisim_5 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_5.setFont(font)
+        self.lbSoyisim_5.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_5.setObjectName("lbSoyisim_5")
+        self.verticalLayout.addWidget(self.lbSoyisim_5)
+        self.lbSoyisim_16 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_16.setFont(font)
+        self.lbSoyisim_16.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_16.setObjectName("lbSoyisim_16")
+        self.verticalLayout.addWidget(self.lbSoyisim_16)
+        self.lbSoyisim_6 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_6.setFont(font)
+        self.lbSoyisim_6.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_6.setObjectName("lbSoyisim_6")
+        self.verticalLayout.addWidget(self.lbSoyisim_6)
+        self.lbSoyisim_7 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_7.setFont(font)
+        self.lbSoyisim_7.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_7.setObjectName("lbSoyisim_7")
+        self.verticalLayout.addWidget(self.lbSoyisim_7)
+        self.lbSoyisim_8 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_8.setFont(font)
+        self.lbSoyisim_8.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_8.setObjectName("lbSoyisim_8")
+        self.verticalLayout.addWidget(self.lbSoyisim_8)
+        self.lbSoyisim_9 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_9.setFont(font)
+        self.lbSoyisim_9.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_9.setObjectName("lbSoyisim_9")
+        self.verticalLayout.addWidget(self.lbSoyisim_9)
+        self.lbSoyisim_10 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_10.setFont(font)
+        self.lbSoyisim_10.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_10.setObjectName("lbSoyisim_10")
+        self.verticalLayout.addWidget(self.lbSoyisim_10)
+        self.lbSoyisim_11 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_11.setFont(font)
+        self.lbSoyisim_11.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_11.setObjectName("lbSoyisim_11")
+        self.verticalLayout.addWidget(self.lbSoyisim_11)
+        self.lbSoyisim_12 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_12.setFont(font)
+        self.lbSoyisim_12.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_12.setObjectName("lbSoyisim_12")
+        self.verticalLayout.addWidget(self.lbSoyisim_12)
+        self.lbSoyisim_13 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_13.setFont(font)
+        self.lbSoyisim_13.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_13.setObjectName("lbSoyisim_13")
+        self.verticalLayout.addWidget(self.lbSoyisim_13)
+        self.lbSoyisim_14 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_14.setFont(font)
+        self.lbSoyisim_14.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_14.setObjectName("lbSoyisim_14")
+        self.verticalLayout.addWidget(self.lbSoyisim_14)
+        self.lbSoyisim_15 = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_15.setFont(font)
+        self.lbSoyisim_15.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_15.setObjectName("lbSoyisim_15")
+        self.verticalLayout.addWidget(self.lbSoyisim_15)
+        self.layoutWidget1 = QtWidgets.QWidget(self.tab_4)
+        self.layoutWidget1.setGeometry(QtCore.QRect(480, 0, 190, 941))
+        self.layoutWidget1.setObjectName("layoutWidget1")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.layoutWidget1)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.ln_cansever_adSoyad = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_adSoyad.setFont(font)
+        self.ln_cansever_adSoyad.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_adSoyad.setObjectName("ln_cansever_adSoyad")
+        self.verticalLayout_2.addWidget(self.ln_cansever_adSoyad)
+        self.ln_cansever_karsiTarafSigortaSirketi = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_karsiTarafSigortaSirketi.setFont(font)
+        self.ln_cansever_karsiTarafSigortaSirketi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_karsiTarafSigortaSirketi.setObjectName("ln_cansever_karsiTarafSigortaSirketi")
+        self.verticalLayout_2.addWidget(self.ln_cansever_karsiTarafSigortaSirketi)
+        self.ln_cansever_policeNo = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_policeNo.setFont(font)
+        self.ln_cansever_policeNo.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_policeNo.setObjectName("ln_cansever_policeNo")
+        self.verticalLayout_2.addWidget(self.ln_cansever_policeNo)
+        self.ln_cansever_HK_DK = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_HK_DK.setFont(font)
+        self.ln_cansever_HK_DK.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_HK_DK.setObjectName("ln_cansever_HK_DK")
+        self.verticalLayout_2.addWidget(self.ln_cansever_HK_DK)
+        self.ln_cansever_magdur_Plaka = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_magdur_Plaka.setFont(font)
+        self.ln_cansever_magdur_Plaka.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_magdur_Plaka.setObjectName("ln_cansever_magdur_Plaka")
+        self.verticalLayout_2.addWidget(self.ln_cansever_magdur_Plaka)
+        self.ln_cansever_karsi_taraf_plaka = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_karsi_taraf_plaka.setFont(font)
+        self.ln_cansever_karsi_taraf_plaka.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_karsi_taraf_plaka.setObjectName("ln_cansever_karsi_taraf_plaka")
+        self.verticalLayout_2.addWidget(self.ln_cansever_karsi_taraf_plaka)
+        self.ln_cansever_kaza_tarihi = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_kaza_tarihi.setFont(font)
+        self.ln_cansever_kaza_tarihi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_kaza_tarihi.setObjectName("ln_cansever_kaza_tarihi")
+        self.verticalLayout_2.addWidget(self.ln_cansever_kaza_tarihi)
+        self.ln_tahkim_basvurusundan_once_odeme_tutari = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_tahkim_basvurusundan_once_odeme_tutari.setFont(font)
+        self.ln_tahkim_basvurusundan_once_odeme_tutari.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_tahkim_basvurusundan_once_odeme_tutari.setObjectName("ln_tahkim_basvurusundan_once_odeme_tutari")
+        self.verticalLayout_2.addWidget(self.ln_tahkim_basvurusundan_once_odeme_tutari)
+        self.ln_cansever_magdur_kusur_orani = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_magdur_kusur_orani.setFont(font)
+        self.ln_cansever_magdur_kusur_orani.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_magdur_kusur_orani.setObjectName("ln_cansever_magdur_kusur_orani")
+        self.verticalLayout_2.addWidget(self.ln_cansever_magdur_kusur_orani)
+        self.ln_cansever_sigorta_sirketine_basvuru_tarihi = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_sigorta_sirketine_basvuru_tarihi.setFont(font)
+        self.ln_cansever_sigorta_sirketine_basvuru_tarihi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_sigorta_sirketine_basvuru_tarihi.setObjectName("ln_cansever_sigorta_sirketine_basvuru_tarihi")
+        self.verticalLayout_2.addWidget(self.ln_cansever_sigorta_sirketine_basvuru_tarihi)
+        self.ln_cansever_basvuru_numarasi = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_basvuru_numarasi.setFont(font)
+        self.ln_cansever_basvuru_numarasi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_basvuru_numarasi.setObjectName("ln_cansever_basvuru_numarasi")
+        self.verticalLayout_2.addWidget(self.ln_cansever_basvuru_numarasi)
+        self.ln_cansever_tahkim_basvuru_tarihi = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_tahkim_basvuru_tarihi.setFont(font)
+        self.ln_cansever_tahkim_basvuru_tarihi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_tahkim_basvuru_tarihi.setObjectName("ln_cansever_tahkim_basvuru_tarihi")
+        self.verticalLayout_2.addWidget(self.ln_cansever_tahkim_basvuru_tarihi)
+        self.ln_cansever_tahkim_basvuru_ucreti = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_tahkim_basvuru_ucreti.setFont(font)
+        self.ln_cansever_tahkim_basvuru_ucreti.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_tahkim_basvuru_ucreti.setObjectName("ln_cansever_tahkim_basvuru_ucreti")
+        self.verticalLayout_2.addWidget(self.ln_cansever_tahkim_basvuru_ucreti)
+        self.ln_cansever_bilirkisi_ucreti_ve_tarihi = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_bilirkisi_ucreti_ve_tarihi.setFont(font)
+        self.ln_cansever_bilirkisi_ucreti_ve_tarihi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_bilirkisi_ucreti_ve_tarihi.setObjectName("ln_cansever_bilirkisi_ucreti_ve_tarihi")
+        self.verticalLayout_2.addWidget(self.ln_cansever_bilirkisi_ucreti_ve_tarihi)
+        self.ln_cansever_aciklama = QtWidgets.QLineEdit(self.layoutWidget1)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cansever_aciklama.setFont(font)
+        self.ln_cansever_aciklama.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cansever_aciklama.setObjectName("ln_cansever_aciklama")
+        self.verticalLayout_2.addWidget(self.ln_cansever_aciklama)
+        self.btn_cansever_sil = QtWidgets.QPushButton(self.tab_4)
+        self.btn_cansever_sil.setGeometry(QtCore.QRect(870, 880, 150, 41))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        self.btn_cansever_sil.setFont(font)
+        self.btn_cansever_sil.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.btn_cansever_sil.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;}")
+        self.btn_cansever_sil.setAutoDefault(True)
+        self.btn_cansever_sil.setDefault(False)
+        self.btn_cansever_sil.setFlat(False)
+        self.btn_cansever_sil.setObjectName("btn_cansever_sil")
+        self.tabWidget.addTab(self.tab_4, "")
+        self.tab_5 = QtWidgets.QWidget()
+        self.tab_5.setObjectName("tab_5")
+        self.layoutWidget_3 = QtWidgets.QWidget(self.tab_5)
+        self.layoutWidget_3.setGeometry(QtCore.QRect(470, 0, 190, 941))
+        self.layoutWidget_3.setObjectName("layoutWidget_3")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.layoutWidget_3)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.ln_cukurova_isim_soyisim = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_isim_soyisim.setFont(font)
+        self.ln_cukurova_isim_soyisim.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_isim_soyisim.setObjectName("ln_cukurova_isim_soyisim")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_isim_soyisim)
+        self.ln_cukurova_sigortasirketi = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_sigortasirketi.setFont(font)
+        self.ln_cukurova_sigortasirketi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_sigortasirketi.setObjectName("ln_cukurova_sigortasirketi")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_sigortasirketi)
+        self.ln_cukurova_policeNo = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_policeNo.setFont(font)
+        self.ln_cukurova_policeNo.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_policeNo.setObjectName("ln_cukurova_policeNo")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_policeNo)
+        self.ln_cukurova_talepKonusu = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_talepKonusu.setFont(font)
+        self.ln_cukurova_talepKonusu.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_talepKonusu.setObjectName("ln_cukurova_talepKonusu")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_talepKonusu)
+        self.ln_cukurova_aracPlaka = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_aracPlaka.setFont(font)
+        self.ln_cukurova_aracPlaka.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_aracPlaka.setObjectName("ln_cukurova_aracPlaka")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_aracPlaka)
+        self.ln_cukurova_kazaTarihi = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_kazaTarihi.setFont(font)
+        self.ln_cukurova_kazaTarihi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_kazaTarihi.setObjectName("ln_cukurova_kazaTarihi")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_kazaTarihi)
+        self.ln_cukurova_karsiTarafPlakasi = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_karsiTarafPlakasi.setFont(font)
+        self.ln_cukurova_karsiTarafPlakasi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_karsiTarafPlakasi.setObjectName("ln_cukurova_karsiTarafPlakasi")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_karsiTarafPlakasi)
+        self.ln_cukurova_kusurOrani = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_kusurOrani.setFont(font)
+        self.ln_cukurova_kusurOrani.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_kusurOrani.setObjectName("ln_cukurova_kusurOrani")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_kusurOrani)
+        self.ln_cukurova_sigortayaBasvuruTarihi = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_sigortayaBasvuruTarihi.setFont(font)
+        self.ln_cukurova_sigortayaBasvuruTarihi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_sigortayaBasvuruTarihi.setObjectName("ln_cukurova_sigortayaBasvuruTarihi")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_sigortayaBasvuruTarihi)
+        self.ln_cukurova_odemeTutari_tarihi = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_odemeTutari_tarihi.setFont(font)
+        self.ln_cukurova_odemeTutari_tarihi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_odemeTutari_tarihi.setObjectName("ln_cukurova_odemeTutari_tarihi")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_odemeTutari_tarihi)
+        self.ln_cukurova_stk_basvuru_numarasi = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_stk_basvuru_numarasi.setFont(font)
+        self.ln_cukurova_stk_basvuru_numarasi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_stk_basvuru_numarasi.setObjectName("ln_cukurova_stk_basvuru_numarasi")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_stk_basvuru_numarasi)
+        self.ln_cukurova_stkbasvuruTarihi = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_stkbasvuruTarihi.setFont(font)
+        self.ln_cukurova_stkbasvuruTarihi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_stkbasvuruTarihi.setObjectName("ln_cukurova_stkbasvuruTarihi")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_stkbasvuruTarihi)
+        self.ln_cukurova_stk_basvuru_masrafi = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_stk_basvuru_masrafi.setFont(font)
+        self.ln_cukurova_stk_basvuru_masrafi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_stk_basvuru_masrafi.setObjectName("ln_cukurova_stk_basvuru_masrafi")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_stk_basvuru_masrafi)
+        self.ln_cukurova_stk_bilirkisi = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_stk_bilirkisi.setFont(font)
+        self.ln_cukurova_stk_bilirkisi.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_stk_bilirkisi.setObjectName("ln_cukurova_stk_bilirkisi")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_stk_bilirkisi)
+        self.ln_cukurova_aciklama = QtWidgets.QLineEdit(self.layoutWidget_3)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_aciklama.setFont(font)
+        self.ln_cukurova_aciklama.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_aciklama.setObjectName("ln_cukurova_aciklama")
+        self.verticalLayout_5.addWidget(self.ln_cukurova_aciklama)
+        self.layoutWidget_4 = QtWidgets.QWidget(self.tab_5)
+        self.layoutWidget_4.setGeometry(QtCore.QRect(0, 10, 464, 921))
+        self.layoutWidget_4.setObjectName("layoutWidget_4")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.layoutWidget_4)
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.lbSoyisim_34 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_34.setFont(font)
+        self.lbSoyisim_34.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_34.setObjectName("lbSoyisim_34")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_34)
+        self.lbSoyisim_35 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_35.setFont(font)
+        self.lbSoyisim_35.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_35.setObjectName("lbSoyisim_35")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_35)
+        self.lbSoyisim_36 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_36.setFont(font)
+        self.lbSoyisim_36.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_36.setObjectName("lbSoyisim_36")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_36)
+        self.lbSoyisim_37 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_37.setFont(font)
+        self.lbSoyisim_37.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_37.setObjectName("lbSoyisim_37")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_37)
+        self.lbSoyisim_38 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_38.setFont(font)
+        self.lbSoyisim_38.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_38.setObjectName("lbSoyisim_38")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_38)
+        self.lbSoyisim_39 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_39.setFont(font)
+        self.lbSoyisim_39.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_39.setObjectName("lbSoyisim_39")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_39)
+        self.lbSoyisim_40 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_40.setFont(font)
+        self.lbSoyisim_40.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_40.setObjectName("lbSoyisim_40")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_40)
+        self.lbSoyisim_41 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_41.setFont(font)
+        self.lbSoyisim_41.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_41.setObjectName("lbSoyisim_41")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_41)
+        self.lbSoyisim_42 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_42.setFont(font)
+        self.lbSoyisim_42.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_42.setObjectName("lbSoyisim_42")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_42)
+        self.lbSoyisim_43 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_43.setFont(font)
+        self.lbSoyisim_43.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_43.setObjectName("lbSoyisim_43")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_43)
+        self.lbSoyisim_44 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_44.setFont(font)
+        self.lbSoyisim_44.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_44.setObjectName("lbSoyisim_44")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_44)
+        self.lbSoyisim_45 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_45.setFont(font)
+        self.lbSoyisim_45.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_45.setObjectName("lbSoyisim_45")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_45)
+        self.lbSoyisim_46 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_46.setFont(font)
+        self.lbSoyisim_46.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_46.setObjectName("lbSoyisim_46")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_46)
+        self.lbSoyisim_47 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_47.setFont(font)
+        self.lbSoyisim_47.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_47.setObjectName("lbSoyisim_47")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_47)
+        self.lbSoyisim_48 = QtWidgets.QLabel(self.layoutWidget_4)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbSoyisim_48.setFont(font)
+        self.lbSoyisim_48.setStyleSheet("QLabel {\n"
+"  background-color: rgb(124, 73, 72);\n"
+"\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px; /* Yazıyı kenarlardan içeri almak için padding kullanabilirsiniz */\n"
+"}")
+        self.lbSoyisim_48.setObjectName("lbSoyisim_48")
+        self.verticalLayout_6.addWidget(self.lbSoyisim_48)
+        self.tbl_cukurova = QtWidgets.QTableWidget(self.tab_5)
+        self.tbl_cukurova.setEnabled(True)
+        self.tbl_cukurova.setGeometry(QtCore.QRect(670, 0, 1221, 851))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tbl_cukurova.sizePolicy().hasHeightForWidth())
+        self.tbl_cukurova.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.tbl_cukurova.setFont(font)
+        self.tbl_cukurova.setMouseTracking(True)
+        self.tbl_cukurova.setTabletTracking(True)
+        self.tbl_cukurova.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.tbl_cukurova.setWhatsThis("")
+        self.tbl_cukurova.setStyleSheet(" background-color: rgb(243, 228, 185);")
+        self.tbl_cukurova.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tbl_cukurova.setRowCount(7500)
+        self.tbl_cukurova.setColumnCount(16)
+        self.tbl_cukurova.setObjectName("tbl_cukurova")
+        self.tbl_cukurova.horizontalHeader().setVisible(False)
+        self.tbl_cukurova.horizontalHeader().setCascadingSectionResizes(False)
+        self.tbl_cukurova.horizontalHeader().setDefaultSectionSize(87)
+        self.btn_cukurova_ekle = QtWidgets.QPushButton(self.tab_5)
+        self.btn_cukurova_ekle.setGeometry(QtCore.QRect(680, 880, 150, 41))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        self.btn_cukurova_ekle.setFont(font)
+        self.btn_cukurova_ekle.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.btn_cukurova_ekle.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;}")
+        self.btn_cukurova_ekle.setAutoDefault(True)
+        self.btn_cukurova_ekle.setDefault(False)
+        self.btn_cukurova_ekle.setFlat(False)
+        self.btn_cukurova_ekle.setObjectName("btn_cukurova_ekle")
+        self.btn_cukurova_ara = QtWidgets.QPushButton(self.tab_5)
+        self.btn_cukurova_ara.setGeometry(QtCore.QRect(1300, 870, 81, 41))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        self.btn_cukurova_ara.setFont(font)
+        self.btn_cukurova_ara.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.btn_cukurova_ara.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;}")
+        self.btn_cukurova_ara.setAutoDefault(True)
+        self.btn_cukurova_ara.setDefault(False)
+        self.btn_cukurova_ara.setFlat(False)
+        self.btn_cukurova_ara.setObjectName("btn_cukurova_ara")
+        self.ln_cukurova_arama = QtWidgets.QLineEdit(self.tab_5)
+        self.ln_cukurova_arama.setGeometry(QtCore.QRect(1030, 870, 261, 50))
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        self.ln_cukurova_arama.setFont(font)
+        self.ln_cukurova_arama.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid black; /* Kenar rengi */\n"
+"    border-radius: 10px; /* Kenarları oval yapar */\n"
+"    padding: 5px; /* İçeriği kenarlardan uzaklaştırır */\n"
+"}")
+        self.ln_cukurova_arama.setObjectName("ln_cukurova_arama")
+        self.btn_cukurova_kayitsil = QtWidgets.QPushButton(self.tab_5)
+        self.btn_cukurova_kayitsil.setGeometry(QtCore.QRect(850, 880, 150, 41))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        self.btn_cukurova_kayitsil.setFont(font)
+        self.btn_cukurova_kayitsil.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.btn_cukurova_kayitsil.setStyleSheet("*{background-color: rgb(66, 1, 1);; color: white; border-radius: 10px;}")
+        self.btn_cukurova_kayitsil.setAutoDefault(True)
+        self.btn_cukurova_kayitsil.setDefault(False)
+        self.btn_cukurova_kayitsil.setFlat(False)
+        self.btn_cukurova_kayitsil.setObjectName("btn_cukurova_kayitsil")
+        self.tabWidget.addTab(self.tab_5, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1920, 21))
@@ -1133,26 +1790,13 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuCansever_Hukuk_B_rosu_Gelir_Gider_Uygulamas.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        MainWindow.setTabOrder(self.ddm_gider_SirketSec, self.ln_gider_isim)
-        MainWindow.setTabOrder(self.ln_gider_isim, self.ln_gider_tc)
-        MainWindow.setTabOrder(self.ln_gider_tc, self.ln_gider_sigortasirketi)
-        MainWindow.setTabOrder(self.ln_gider_sigortasirketi, self.ln_gider_policeno)
-        MainWindow.setTabOrder(self.ln_gider_policeno, self.ln_gider_hkDk)
-        MainWindow.setTabOrder(self.ln_gider_hkDk, self.ln_gider_magdurPlaka)
-        MainWindow.setTabOrder(self.ln_gider_magdurPlaka, self.ddm_gider_kazaTarihi_yil)
-        MainWindow.setTabOrder(self.ddm_gider_kazaTarihi_yil, self.ddm_gider_kazaTarihi_ay)
-        MainWindow.setTabOrder(self.ddm_gider_kazaTarihi_ay, self.ddm_gider_kazaTarihi_gun)
-        MainWindow.setTabOrder(self.ddm_gider_kazaTarihi_gun, self.ln_gider_OdemeTutari)
-        MainWindow.setTabOrder(self.ln_gider_OdemeTutari, self.ln_gider_STKbasvuruNo)
-        MainWindow.setTabOrder(self.ln_gider_STKbasvuruNo, self.ddm_gider_stkBasvuruTarihi_yil)
-        MainWindow.setTabOrder(self.ddm_gider_stkBasvuruTarihi_yil, self.ddm_gider_stkBasvuruTarihi_ay)
-        MainWindow.setTabOrder(self.ddm_gider_stkBasvuruTarihi_ay, self.ddm_gider_stkBasvuruTarihi_gun)
-        MainWindow.setTabOrder(self.ddm_gider_stkBasvuruTarihi_gun, self.ln_gider_STKUcreti)
-        MainWindow.setTabOrder(self.ln_gider_STKUcreti, self.ln_gider_BilirkisiUcreti)
-        MainWindow.setTabOrder(self.ln_gider_BilirkisiUcreti, self.ln_gider_Diger)
-        MainWindow.setTabOrder(self.ln_gider_Diger, self.ln_gider_aciklama)
+        MainWindow.setTabOrder(self.ln_gider_isim, self.ddm_gider_yil)
+        MainWindow.setTabOrder(self.ddm_gider_yil, self.ddm_gider_ay)
+        MainWindow.setTabOrder(self.ddm_gider_ay, self.ddm_gider_gun)
+        MainWindow.setTabOrder(self.ddm_gider_gun, self.ln_gider_OdemeTutari)
+        MainWindow.setTabOrder(self.ln_gider_OdemeTutari, self.ln_gider_aciklama)
         MainWindow.setTabOrder(self.ln_gider_aciklama, self.btn_gider_Ekle)
         MainWindow.setTabOrder(self.btn_gider_Ekle, self.ln_gider_Ara)
         MainWindow.setTabOrder(self.ln_gider_Ara, self.btn_gider_Sil)
@@ -1182,35 +1826,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.ddm_gider_SirketSec.setItemText(0, _translate("MainWindow", "Hukuk Şirketi Seç"))
-        self.ddm_gider_SirketSec.setItemText(1, _translate("MainWindow", "ŞirketDisi"))
-        self.ddm_gider_SirketSec.setItemText(2, _translate("MainWindow", "CanseverHukuk"))
-        self.ddm_gider_SirketSec.setItemText(3, _translate("MainWindow", "CukurovaHukuk"))
         self.lbMeslek_2.setText(_translate("MainWindow", "İsim Soyisim"))
         self.ln_gider_isim.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.ln_gider_isim.setPlaceholderText(_translate("MainWindow", "Ali Cambaz"))
-        self.lbMeslek_3.setText(_translate("MainWindow", "TC NO:"))
-        self.ln_gider_tc.setPlaceholderText(_translate("MainWindow", "25987425564"))
-        self.lbMeslek_4.setText(_translate("MainWindow", "Sigorta Şirketi"))
-        self.ln_gider_sigortasirketi.setPlaceholderText(_translate("MainWindow", "Axa Sigorta"))
-        self.lbMeslek_5.setText(_translate("MainWindow", "Poliçe No"))
-        self.ln_gider_policeno.setPlaceholderText(_translate("MainWindow", "254698AE"))
-        self.lbMeslek_6.setText(_translate("MainWindow", "HK / DK"))
-        self.lbMeslek_7.setText(_translate("MainWindow", "Mağdur Plaka"))
-        self.lbMeslek_8.setText(_translate("MainWindow", "Kaza Tarihi"))
+        self.lbMeslek_8.setText(_translate("MainWindow", "Tarih"))
         self.lbMeslek_9.setText(_translate("MainWindow", "Ödeme Tutarı"))
-        self.lbMeslek_10.setText(_translate("MainWindow", "STK Başvuru No:"))
-        self.lbMeslek_11.setText(_translate("MainWindow", "STK Başvuru Tarihi"))
-        self.lbMeslek_12.setText(_translate("MainWindow", "STK Ücreti"))
-        self.lbMeslek_13.setText(_translate("MainWindow", "Bilirkişi Ücreti"))
-        self.lbMeslek_14.setText(_translate("MainWindow", "Diğer"))
-        self.ln_gider_hkDk.setPlaceholderText(_translate("MainWindow", "HK"))
         self.ln_gider_OdemeTutari.setPlaceholderText(_translate("MainWindow", "2500"))
-        self.ln_gider_magdurPlaka.setPlaceholderText(_translate("MainWindow", "01 ABC 001"))
-        self.ln_gider_STKbasvuruNo.setPlaceholderText(_translate("MainWindow", "256985548EQ"))
-        self.ln_gider_BilirkisiUcreti.setPlaceholderText(_translate("MainWindow", "7542"))
-        self.ln_gider_STKUcreti.setPlaceholderText(_translate("MainWindow", "69851"))
-        self.ln_gider_Diger.setPlaceholderText(_translate("MainWindow", "2652"))
         self.btn_gider_Ekle.setText(_translate("MainWindow", "Ekle"))
         self.btn_gider_Sil.setText(_translate("MainWindow", "Sil"))
         self.ln_gider_toplamView.setText(_translate("MainWindow", "265055656"))
@@ -1218,118 +1839,62 @@ class Ui_MainWindow(object):
         self.btn_gider_ara.setText(_translate("MainWindow", "ARA?"))
         self.lbMeslek_15.setText(_translate("MainWindow", "Açıklama"))
         self.ln_gider_aciklama.setPlaceholderText(_translate("MainWindow", "Açıklama "))
-        self.ddm_gider_kazaTarihi_yil.setItemText(0, _translate("MainWindow", "Yıl"))
-        self.ddm_gider_kazaTarihi_yil.setItemText(1, _translate("MainWindow", "2023"))
-        self.ddm_gider_kazaTarihi_yil.setItemText(2, _translate("MainWindow", "2024"))
-        self.ddm_gider_kazaTarihi_yil.setItemText(3, _translate("MainWindow", "2025"))
-        self.ddm_gider_kazaTarihi_yil.setItemText(4, _translate("MainWindow", "2026"))
-        self.ddm_gider_kazaTarihi_yil.setItemText(5, _translate("MainWindow", "2027"))
-        self.ddm_gider_kazaTarihi_yil.setItemText(6, _translate("MainWindow", "2028"))
-        self.ddm_gider_kazaTarihi_yil.setItemText(7, _translate("MainWindow", "2029"))
-        self.ddm_gider_kazaTarihi_yil.setItemText(8, _translate("MainWindow", "2030"))
-        self.ddm_gider_kazaTarihi_yil.setItemText(9, _translate("MainWindow", "2031"))
-        self.ddm_gider_kazaTarihi_yil.setItemText(10, _translate("MainWindow", "2032"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(0, _translate("MainWindow", "Ay"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(1, _translate("MainWindow", "01"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(2, _translate("MainWindow", "02"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(3, _translate("MainWindow", "03"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(4, _translate("MainWindow", "04"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(5, _translate("MainWindow", "05"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(6, _translate("MainWindow", "06"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(7, _translate("MainWindow", "07"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(8, _translate("MainWindow", "08"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(9, _translate("MainWindow", "09"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(10, _translate("MainWindow", "10"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(11, _translate("MainWindow", "11"))
-        self.ddm_gider_kazaTarihi_ay.setItemText(12, _translate("MainWindow", "12"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(0, _translate("MainWindow", "Gün"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(1, _translate("MainWindow", "1"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(2, _translate("MainWindow", "2"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(3, _translate("MainWindow", "3"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(4, _translate("MainWindow", "4"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(5, _translate("MainWindow", "5"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(6, _translate("MainWindow", "6"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(7, _translate("MainWindow", "7"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(8, _translate("MainWindow", "8"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(9, _translate("MainWindow", "9"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(10, _translate("MainWindow", "10"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(11, _translate("MainWindow", "11"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(12, _translate("MainWindow", "12"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(13, _translate("MainWindow", "13"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(14, _translate("MainWindow", "14"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(15, _translate("MainWindow", "15"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(16, _translate("MainWindow", "16"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(17, _translate("MainWindow", "17"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(18, _translate("MainWindow", "18"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(19, _translate("MainWindow", "19"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(20, _translate("MainWindow", "20"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(21, _translate("MainWindow", "21"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(22, _translate("MainWindow", "22"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(23, _translate("MainWindow", "23"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(24, _translate("MainWindow", "24"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(25, _translate("MainWindow", "25"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(26, _translate("MainWindow", "26"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(27, _translate("MainWindow", "27"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(28, _translate("MainWindow", "28"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(29, _translate("MainWindow", "29"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(30, _translate("MainWindow", "30"))
-        self.ddm_gider_kazaTarihi_gun.setItemText(31, _translate("MainWindow", "31"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(0, _translate("MainWindow", "Gün"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(1, _translate("MainWindow", "1"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(2, _translate("MainWindow", "2"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(3, _translate("MainWindow", "3"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(4, _translate("MainWindow", "4"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(5, _translate("MainWindow", "5"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(6, _translate("MainWindow", "6"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(7, _translate("MainWindow", "7"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(8, _translate("MainWindow", "8"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(9, _translate("MainWindow", "9"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(10, _translate("MainWindow", "10"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(11, _translate("MainWindow", "11"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(12, _translate("MainWindow", "12"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(13, _translate("MainWindow", "13"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(14, _translate("MainWindow", "14"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(15, _translate("MainWindow", "15"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(16, _translate("MainWindow", "16"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(17, _translate("MainWindow", "17"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(18, _translate("MainWindow", "18"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(19, _translate("MainWindow", "19"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(20, _translate("MainWindow", "20"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(21, _translate("MainWindow", "21"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(22, _translate("MainWindow", "22"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(23, _translate("MainWindow", "23"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(24, _translate("MainWindow", "24"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(25, _translate("MainWindow", "25"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(26, _translate("MainWindow", "26"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(27, _translate("MainWindow", "27"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(28, _translate("MainWindow", "28"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(29, _translate("MainWindow", "29"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(30, _translate("MainWindow", "30"))
-        self.ddm_gider_stkBasvuruTarihi_gun.setItemText(31, _translate("MainWindow", "31"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(0, _translate("MainWindow", "Ay"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(1, _translate("MainWindow", "01"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(2, _translate("MainWindow", "02"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(3, _translate("MainWindow", "03"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(4, _translate("MainWindow", "04"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(5, _translate("MainWindow", "05"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(6, _translate("MainWindow", "06"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(7, _translate("MainWindow", "07"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(8, _translate("MainWindow", "08"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(9, _translate("MainWindow", "09"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(10, _translate("MainWindow", "10"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(11, _translate("MainWindow", "11"))
-        self.ddm_gider_stkBasvuruTarihi_ay.setItemText(12, _translate("MainWindow", "12"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(0, _translate("MainWindow", "Yıl"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(1, _translate("MainWindow", "2023"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(2, _translate("MainWindow", "2024"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(3, _translate("MainWindow", "2025"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(4, _translate("MainWindow", "2026"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(5, _translate("MainWindow", "2027"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(6, _translate("MainWindow", "2028"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(7, _translate("MainWindow", "2029"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(8, _translate("MainWindow", "2030"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(9, _translate("MainWindow", "2031"))
-        self.ddm_gider_stkBasvuruTarihi_yil.setItemText(10, _translate("MainWindow", "2032"))
+        self.ddm_gider_yil.setItemText(0, _translate("MainWindow", "Yıl"))
+        self.ddm_gider_yil.setItemText(1, _translate("MainWindow", "2023"))
+        self.ddm_gider_yil.setItemText(2, _translate("MainWindow", "2024"))
+        self.ddm_gider_yil.setItemText(3, _translate("MainWindow", "2025"))
+        self.ddm_gider_yil.setItemText(4, _translate("MainWindow", "2026"))
+        self.ddm_gider_yil.setItemText(5, _translate("MainWindow", "2027"))
+        self.ddm_gider_yil.setItemText(6, _translate("MainWindow", "2028"))
+        self.ddm_gider_yil.setItemText(7, _translate("MainWindow", "2029"))
+        self.ddm_gider_yil.setItemText(8, _translate("MainWindow", "2030"))
+        self.ddm_gider_yil.setItemText(9, _translate("MainWindow", "2031"))
+        self.ddm_gider_yil.setItemText(10, _translate("MainWindow", "2032"))
+        self.ddm_gider_ay.setItemText(0, _translate("MainWindow", "Ay"))
+        self.ddm_gider_ay.setItemText(1, _translate("MainWindow", "01"))
+        self.ddm_gider_ay.setItemText(2, _translate("MainWindow", "02"))
+        self.ddm_gider_ay.setItemText(3, _translate("MainWindow", "03"))
+        self.ddm_gider_ay.setItemText(4, _translate("MainWindow", "04"))
+        self.ddm_gider_ay.setItemText(5, _translate("MainWindow", "05"))
+        self.ddm_gider_ay.setItemText(6, _translate("MainWindow", "06"))
+        self.ddm_gider_ay.setItemText(7, _translate("MainWindow", "07"))
+        self.ddm_gider_ay.setItemText(8, _translate("MainWindow", "08"))
+        self.ddm_gider_ay.setItemText(9, _translate("MainWindow", "09"))
+        self.ddm_gider_ay.setItemText(10, _translate("MainWindow", "10"))
+        self.ddm_gider_ay.setItemText(11, _translate("MainWindow", "11"))
+        self.ddm_gider_ay.setItemText(12, _translate("MainWindow", "12"))
+        self.ddm_gider_gun.setItemText(0, _translate("MainWindow", "Gün"))
+        self.ddm_gider_gun.setItemText(1, _translate("MainWindow", "1"))
+        self.ddm_gider_gun.setItemText(2, _translate("MainWindow", "2"))
+        self.ddm_gider_gun.setItemText(3, _translate("MainWindow", "3"))
+        self.ddm_gider_gun.setItemText(4, _translate("MainWindow", "4"))
+        self.ddm_gider_gun.setItemText(5, _translate("MainWindow", "5"))
+        self.ddm_gider_gun.setItemText(6, _translate("MainWindow", "6"))
+        self.ddm_gider_gun.setItemText(7, _translate("MainWindow", "7"))
+        self.ddm_gider_gun.setItemText(8, _translate("MainWindow", "8"))
+        self.ddm_gider_gun.setItemText(9, _translate("MainWindow", "9"))
+        self.ddm_gider_gun.setItemText(10, _translate("MainWindow", "10"))
+        self.ddm_gider_gun.setItemText(11, _translate("MainWindow", "11"))
+        self.ddm_gider_gun.setItemText(12, _translate("MainWindow", "12"))
+        self.ddm_gider_gun.setItemText(13, _translate("MainWindow", "13"))
+        self.ddm_gider_gun.setItemText(14, _translate("MainWindow", "14"))
+        self.ddm_gider_gun.setItemText(15, _translate("MainWindow", "15"))
+        self.ddm_gider_gun.setItemText(16, _translate("MainWindow", "16"))
+        self.ddm_gider_gun.setItemText(17, _translate("MainWindow", "17"))
+        self.ddm_gider_gun.setItemText(18, _translate("MainWindow", "18"))
+        self.ddm_gider_gun.setItemText(19, _translate("MainWindow", "19"))
+        self.ddm_gider_gun.setItemText(20, _translate("MainWindow", "20"))
+        self.ddm_gider_gun.setItemText(21, _translate("MainWindow", "21"))
+        self.ddm_gider_gun.setItemText(22, _translate("MainWindow", "22"))
+        self.ddm_gider_gun.setItemText(23, _translate("MainWindow", "23"))
+        self.ddm_gider_gun.setItemText(24, _translate("MainWindow", "24"))
+        self.ddm_gider_gun.setItemText(25, _translate("MainWindow", "25"))
+        self.ddm_gider_gun.setItemText(26, _translate("MainWindow", "26"))
+        self.ddm_gider_gun.setItemText(27, _translate("MainWindow", "27"))
+        self.ddm_gider_gun.setItemText(28, _translate("MainWindow", "28"))
+        self.ddm_gider_gun.setItemText(29, _translate("MainWindow", "29"))
+        self.ddm_gider_gun.setItemText(30, _translate("MainWindow", "30"))
+        self.ddm_gider_gun.setItemText(31, _translate("MainWindow", "31"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Giderler"))
         self.ddm_gelir_gun.setItemText(0, _translate("MainWindow", "Gün Gir"))
         self.ddm_gelir_gun.setItemText(1, _translate("MainWindow", "1"))
@@ -1405,4 +1970,72 @@ class Ui_MainWindow(object):
         self.btn_gelir_sil_9.setText(_translate("MainWindow", "Net Kar -->"))
         self.page_yenile.setText(_translate("MainWindow", "Yenile"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "Net Kar"))
+        self.btn_cansever_ekle.setText(_translate("MainWindow", "Ekle"))
+        self.btn_ara_cansever.setText(_translate("MainWindow", "ARA?"))
+        self.lbSoyisim_3.setText(_translate("MainWindow", "Mağdur Araç Sahibi Adı/Soyadı"))
+        self.lbSoyisim_17.setText(_translate("MainWindow", "Karşı Taraf Sigorta Şirketi"))
+        self.lbSoyisim_4.setText(_translate("MainWindow", "Poliçe Numarası"))
+        self.lbSoyisim_5.setText(_translate("MainWindow", "Hasar Farkı/ Değer Kaybı Talep Konusu"))
+        self.lbSoyisim_16.setText(_translate("MainWindow", "Mağdur Araç Plaka"))
+        self.lbSoyisim_6.setText(_translate("MainWindow", "Karşı Taraf Plakası"))
+        self.lbSoyisim_7.setText(_translate("MainWindow", "Kaza Tarihi"))
+        self.lbSoyisim_8.setText(_translate("MainWindow", "Tahkim Başvurusundan Önce Ödeme Tutarı"))
+        self.lbSoyisim_9.setText(_translate("MainWindow", "Mağdur Kusur Oranı"))
+        self.lbSoyisim_10.setText(_translate("MainWindow", "Sigorta Şirketine Başvuru Tarihi"))
+        self.lbSoyisim_11.setText(_translate("MainWindow", "Tahkim Başvuru Numarası"))
+        self.lbSoyisim_12.setText(_translate("MainWindow", "Tahkim Başvuru Tarihi"))
+        self.lbSoyisim_13.setText(_translate("MainWindow", "Tahkim Başvuru Ücreti"))
+        self.lbSoyisim_14.setText(_translate("MainWindow", "Tahkim Bilirkişi Ücreti ve tarihi"))
+        self.lbSoyisim_15.setText(_translate("MainWindow", "Açıklama"))
+        self.ln_cansever_adSoyad.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_karsiTarafSigortaSirketi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_policeNo.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_HK_DK.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_magdur_Plaka.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_karsi_taraf_plaka.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_kaza_tarihi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_tahkim_basvurusundan_once_odeme_tutari.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_magdur_kusur_orani.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_sigorta_sirketine_basvuru_tarihi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_basvuru_numarasi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_tahkim_basvuru_tarihi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_tahkim_basvuru_ucreti.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_bilirkisi_ucreti_ve_tarihi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cansever_aciklama.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.btn_cansever_sil.setText(_translate("MainWindow", "Sil"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "CanseverHukuk"))
+        self.ln_cukurova_isim_soyisim.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_sigortasirketi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_policeNo.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_talepKonusu.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_aracPlaka.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_kazaTarihi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_karsiTarafPlakasi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_kusurOrani.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_sigortayaBasvuruTarihi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_odemeTutari_tarihi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_stk_basvuru_numarasi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_stkbasvuruTarihi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_stk_basvuru_masrafi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_stk_bilirkisi.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.ln_cukurova_aciklama.setPlaceholderText(_translate("MainWindow", "56852"))
+        self.lbSoyisim_34.setText(_translate("MainWindow", "Araç Sahibi Adı/Soyadı/ TC"))
+        self.lbSoyisim_35.setText(_translate("MainWindow", "Sigorta Şirketi"))
+        self.lbSoyisim_36.setText(_translate("MainWindow", "Poliçe Numarası"))
+        self.lbSoyisim_37.setText(_translate("MainWindow", "Talep Konusu"))
+        self.lbSoyisim_38.setText(_translate("MainWindow", "Araç Plaka"))
+        self.lbSoyisim_39.setText(_translate("MainWindow", "Kaza Tarihi"))
+        self.lbSoyisim_40.setText(_translate("MainWindow", "Karşı Taraf Plakası"))
+        self.lbSoyisim_41.setText(_translate("MainWindow", "Kusur Oranı"))
+        self.lbSoyisim_42.setText(_translate("MainWindow", "Sigortaya Başvuru Tarihi"))
+        self.lbSoyisim_43.setText(_translate("MainWindow", "Ödeme Tutarı/ Tarihi"))
+        self.lbSoyisim_44.setText(_translate("MainWindow", "STK Başvuru Numarası"))
+        self.lbSoyisim_45.setText(_translate("MainWindow", "STK Başvuru Tarihi"))
+        self.lbSoyisim_46.setText(_translate("MainWindow", "STK Başvuru Masrafı"))
+        self.lbSoyisim_47.setText(_translate("MainWindow", "STK Bilirkişi"))
+        self.lbSoyisim_48.setText(_translate("MainWindow", "Açıklama"))
+        self.btn_cukurova_ekle.setText(_translate("MainWindow", "Ekle"))
+        self.btn_cukurova_ara.setText(_translate("MainWindow", "ARA?"))
+        self.btn_cukurova_kayitsil.setText(_translate("MainWindow", "Sil"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("MainWindow", "ÇukurovaHukuk"))
         self.menuCansever_Hukuk_B_rosu_Gelir_Gider_Uygulamas.setTitle(_translate("MainWindow", "Cansever Hukuk Bürosu Gelir Gider Uygulaması"))
