@@ -103,7 +103,7 @@ def gider_listele():
         for column_number, data in enumerate(row_data):
             ui.tbl_gider.setItem(row_number, column_number, QTableWidgetItem(str(data)))
         # Son sütun, SpesifikToplam değerlerini toplam değişkenine ekle
-        spesifik_toplam = row_data[-2]  # Son sütun, SpesifikToplam
+        spesifik_toplam = row_data[2]  # Son sütun, SpesifikToplam
         toplam += spesifik_toplam
 
     # Toplamı ln_gider_toplamView içinde göster
