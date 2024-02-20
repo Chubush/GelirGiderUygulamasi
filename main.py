@@ -61,14 +61,14 @@ def gider_kayit_ekle():
         )
         return
 
-    tabloya_ekle = """INSERT INTO GiderTablo (IsimSoyisim, Tarih, OdemeTutari, Aciklama) 
+    tabloya_ekle = """INSERT INTO GiderTablo (IsimSoyisim, OdemeTutari, Tarih, Aciklama) 
                     VALUES (?,?,?,?)"""
 
     # Parametrelerin bir tuple içinde olduğundan emin olun
     veri_tuple = (
         isimSoyisim,
-        tarih,
         odeme_tutari,
+        tarih,        
         aciklama,
     )
 
@@ -89,7 +89,7 @@ def gider_listele():
 
     # Veritabanından verileri çek
     try:
-        cursor.execute("SELECT * FROM GiderTablo")
+        cursor.execute("SELECT ID, IsimSoyisim, OdemeTutari, Tarih, Aciklama FROM GiderTablo")
     except Exception as e:
         print(e)
     veriler = cursor.fetchall()
@@ -99,12 +99,14 @@ def gider_listele():
 
     # Tabloya verileri ekle
     for row_number, row_data in enumerate(veriler):
-        ui.tbl_gider.insertRow(row_number)
-        for column_number, data in enumerate(row_data):
-            ui.tbl_gider.setItem(row_number, column_number, QTableWidgetItem(str(data)))
-        # Son sütun, SpesifikToplam değerlerini toplam değişkenine ekle
-        spesifik_toplam = row_data[2]  # Son sütun, SpesifikToplam
-        toplam += spesifik_toplam
+            ui.tbl_gider.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                ui.tbl_gider.setItem(
+                    row_number, column_number, QTableWidgetItem(str(data))
+                )
+            # Son sütun, OdemeTutari değerlerini toplam değişkenine ekle
+            spesifik_toplam = row_data[2]  # OdemeTutari sütunu
+            toplam += spesifik_toplam
 
     # Toplamı ln_gider_toplamView içinde göster
     ui.ln_gider_toplamView.setText(str(toplam))
@@ -114,8 +116,8 @@ def gider_listele():
         [
             "ID",
             "İsim Soyisim",
-            "Tarih",
-            "Ödeme Tutarı",
+            "Ödeme Tutarı",   
+            "Tarih",                                 
             "Açıklama",
         ]
     )
@@ -197,7 +199,7 @@ def gider_arama():
                     row_number, column_number, QTableWidgetItem(str(data))
                 )
             # Son sütun, OdemeTutari değerlerini toplam değişkenine ekle
-            spesifik_toplam = row_data[3]  # OdemeTutari sütunu
+            spesifik_toplam = row_data[2]  # OdemeTutari sütunu
             toplam += spesifik_toplam
 
         # Toplamı ln_gider_toplamView içinde göster
@@ -245,7 +247,7 @@ def gelir_kayit_ekle():
     gelir_ay = ui.ddm_gelir_ay.currentText().strip()
     gelir_gun = ui.ddm_gelir_gun.currentText().strip()
 
-    gelir_tarih = gelir_yil + "/" + gelir_ay + "/" + gelir_gun
+    gelir_tarih = gelir_yil + "." + gelir_ay + "." + gelir_gun
     print("gelir tarih " + gelir_tarih)
 
     if (
@@ -273,7 +275,8 @@ def gelir_kayit_ekle():
 
     # Parametrelerin bir tuple içinde olduğundan emin olun
     veri_tuple = (
-        gelir_tarih,
+      
+        gelir_tarih,        
         float(gelir_miktari),
         gelir_aciklama,
     )
@@ -295,8 +298,11 @@ def gelir_listele():
         ui.tbl_gelir.setRowCount(0)
 
         # Veritabanından verileri çek
-        cursor.execute("SELECT ID, Tarih, GelirMiktari, Aciklama FROM GelirTablo")
+        cursor.execute("SELECT * FROM GelirTablo")
         veriler = cursor.fetchall()
+
+        # Toplam gelir miktarını hesaplamak için bir değişken oluştur
+        toplam = 0
 
         # Tabloya verileri ekle
         for row_number, row_data in enumerate(veriler):
@@ -305,12 +311,13 @@ def gelir_listele():
                 ui.tbl_gelir.setItem(
                     row_number, column_number, QTableWidgetItem(str(data))
                 )
-
-        # Toplam gelir miktarını hesapla
-        toplam_gelir = sum(row[2] for row in veriler)
+                # Gelir Miktarı sütunu
+                if column_number == 2:
+                    gelir_miktari = data
+                    toplam += gelir_miktari
 
         # Toplam gelir miktarını göster
-        ui.ln_toplam_gelir.setText(str(toplam_gelir))
+        ui.ln_toplam_gelir.setText(str(toplam))
 
         # Tablo başlıklarını ayarla
         ui.tbl_gelir.setHorizontalHeaderLabels(
@@ -319,7 +326,6 @@ def gelir_listele():
 
     except Exception as e:
         QMessageBox.critical(None, "Hata", f"Hata: {e}")
-
 
 def gelir_kayit_sil():
     # Seçilen satırın indeksini al
