@@ -23,8 +23,9 @@ def is_float(value):
         return False
 
 
-try:
-    gider_tablo_olustur_sorgusu = """
+def gider_tablo_olustur():
+    try:
+        gider_tablo_olustur_sorgusu = """
             CREATE TABLE IF NOT EXISTS GiderTablo(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,           
             IsimSoyisim TEXT, 
@@ -32,27 +33,52 @@ try:
             OdemeTutari REAL,
             Aciklama TEXT)
         """
-    cursor.execute(gider_tablo_olustur_sorgusu)
-    baglanti.commit()
-except Exception as e:
-    QMessageBox.critical(None, "Hata", f"Hata: {e}")
+        cursor.execute(gider_tablo_olustur_sorgusu)
+        baglanti.commit()
+    except Exception as e:
+        QMessageBox.critical(None, "Hata", f"Hata: {e}")
 
+
+def isim_soyisim_kontrol(text):
+    pattern = r"^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]+$"
+    if re.match(pattern, text):
+        return True
+    else:
+        QMessageBox.critical(None, "Hata", f"İsim yerine {text} ifadesi yanlış sadece harf içermeli")
+
+def tarih_kontrol(yil, ay, gun):
+    if yil == "Yıl" or ay == "Ay" or gun == "Gün":
+        QMessageBox.critical(None, "Hata", f"Tarih bilgisi giremeyi unutmayın")
+    else:
+        return True
+
+def aciklama_kontrol(text):
+    yasakli_kelimeler = ["%", "drop", "table", "delete"]
+    for kelime in yasakli_kelimeler:
+        if kelime in text.lower():
+            QMessageBox.critical(None, "Hata", f"{text} ifadesi yanlış başka bir ibare deneyin")
+        else:
+            return False    
+    return True
 
 def gider_kayit_ekle():
-
+    gider_tablo_olustur()
     isimSoyisim = ui.ln_gider_isim.text().strip()
+    if not isim_soyisim_kontrol(isimSoyisim):
+        return
 
-    # kaza tarihi manipülasyonlar
     Yil = ui.ddm_gider_yil.currentText().strip()
     Ay = ui.ddm_gider_ay.currentText().strip()
     Gun = ui.ddm_gider_gun.currentText().strip()
+    if not tarih_kontrol(Yil, Ay, Gun):
+        return
     tarih = Yil + "/" + Ay + "/" + Gun
 
     aciklama = ui.ln_gider_aciklama.text().strip()
+    if not aciklama_kontrol(aciklama):
+        return
 
-    # OdemeTutari değerinin doğrulanması
     odeme_tutari_input = ui.ln_gider_OdemeTutari.text().strip()
-
     if is_float(odeme_tutari_input) and float(odeme_tutari_input) >= 0:
         odeme_tutari = float(odeme_tutari_input)
     else:
@@ -64,7 +90,6 @@ def gider_kayit_ekle():
     tabloya_ekle = """INSERT INTO GiderTablo (IsimSoyisim, OdemeTutari, Tarih, Aciklama) 
                     VALUES (?,?,?,?)"""
 
-    # Parametrelerin bir tuple içinde olduğundan emin olun
     veri_tuple = (
         isimSoyisim,
         odeme_tutari,
@@ -77,7 +102,7 @@ def gider_kayit_ekle():
         baglanti.commit()
         QMessageBox.information(None, "Başarılı", "Kayıt eklendi.")
         gider_listele()
-        # lnleri_temizle()
+        lnleri_temizle()
     except Exception as e:
         QMessageBox.critical(None, "Hata", f"Hata: {e}")
 
@@ -107,7 +132,7 @@ def gider_listele():
             # Son sütun, OdemeTutari değerlerini toplam değişkenine ekle
             spesifik_toplam = row_data[2]  # OdemeTutari sütunu
             toplam += spesifik_toplam
-
+            toplam=round(toplam,2)
     # Toplamı ln_gider_toplamView içinde göster
     ui.ln_gider_toplamView.setText(str(toplam))
 
@@ -247,7 +272,7 @@ def gelir_kayit_ekle():
     gelir_ay = ui.ddm_gelir_ay.currentText().strip()
     gelir_gun = ui.ddm_gelir_gun.currentText().strip()
 
-    gelir_tarih = gelir_yil + "." + gelir_ay + "." + gelir_gun
+    gelir_tarih = gelir_yil + "/" + gelir_ay + "/" + gelir_gun
     print("gelir tarih " + gelir_tarih)
 
     if (
@@ -269,6 +294,8 @@ def gelir_kayit_ekle():
         return
 
     gelir_aciklama = ui.ln_gelir_aciklama.text().strip()
+    if not aciklama_kontrol(gelir_aciklama):
+        return
 
     tabloya_ekle = """INSERT INTO GelirTablo (Tarih, GelirMiktari, Aciklama) 
                     VALUES (?, ?, ?)"""
@@ -286,7 +313,7 @@ def gelir_kayit_ekle():
         baglanti.commit()
         QMessageBox.information(None, "Başarılı", "Kayıt eklendi.")
         gelir_listele()
-        # lnleri_temizle()
+        lnleri_temizle()
     except Exception as e:
         QMessageBox.critical(None, "Hata", f"Hata: {e}")
 
@@ -315,6 +342,7 @@ def gelir_listele():
                 if column_number == 2:
                     gelir_miktari = data
                     toplam += gelir_miktari
+                    toplam=round(toplam,2)
 
         # Toplam gelir miktarını göster
         ui.ln_toplam_gelir.setText(str(toplam))
@@ -430,66 +458,101 @@ def gelir_run():
 # Net Kar********************************************************
 def page():
     try:
-        # Veritabanından bütün spesifik giderleri çek
-        cursor.execute("SELECT OdemeTutari FROM GiderTablo")
-        giderler = cursor.fetchall()
+        # Eğer tarih seçilmişse, o tarihe göre filtrele
+        page_yil_index = ui.page_ddm_yil.currentIndex()
+        page_ay_index = ui.page_ddm_ay.currentIndex()
+        giderler = []
+        gelirler = []
 
+        if page_yil_index == 0 and page_ay_index == 0:
+            # Yıl ve ay butonlarından herhangi biri seçilmemişse, tüm gelirleri ve giderleri al
+            cursor.execute("SELECT OdemeTutari, Tarih FROM GiderTablo")
+            giderler = cursor.fetchall()
+            cursor.execute("SELECT GelirMiktari, Tarih FROM GelirTablo")
+            gelirler = cursor.fetchall()
+        else:
+            # Veritabanından bütün spesifik giderleri çek
+            page_yil = ui.page_ddm_yil.currentText()
+            page_ay = ui.page_ddm_ay.currentText()
+
+            cursor.execute("SELECT OdemeTutari, Tarih FROM GiderTablo")
+            giderler = [gider for gider in cursor.fetchall() if f"{page_yil}/{page_ay}" in gider[1]]
+
+            # Veritabanından bütün gelirleri çek
+            cursor.execute("SELECT GelirMiktari, Tarih FROM GelirTablo")
+            gelirler = [gelir for gelir in cursor.fetchall() if f"{page_yil}/{page_ay}" in gelir[1]]
+        
         # Toplam spesifik gider miktarını hesapla
         toplam_gider = sum(gider[0] for gider in giderler)
-
         ui.page_toplamGider.setText(str(toplam_gider))
-        # Veritabanından bütün gelirleri çek
-        cursor.execute("SELECT GelirMiktari FROM GelirTablo")
-        gelirler = cursor.fetchall()
-
+        
         # Toplam gelir miktarını hesapla
         toplam_gelir = sum(gelir[0] for gelir in gelirler)
-
-        # Toplam gelir miktarını göster
         ui.page_toplamGelir.setText(str(toplam_gelir))
-
+        
         # Net karı hesapla
-        net_kar = toplam_gelir - toplam_gider
-
-        # Net karı göster
+        net_kar = round(toplam_gelir - toplam_gider, 2)
         ui.page_netKar.setText(str(net_kar))
 
     except Exception as e:
         QMessageBox.critical(None, "Hata", f"Hata: {e}")
 
-
 # Net Kar Bitiş*******************************************************************************************
+def lnleri_temizle():
+     # Gider ekranındaki input alanlarını temizle
+     try:
+         #gider clear
+         ui.ln_gider_isim.clear()
+         ui.ddm_gider_yil.setCurrentIndex(0)
+         ui.ddm_gider_ay.setCurrentIndex(0)
+         ui.ddm_gider_gun.setCurrentIndex(0)
+         ui.ln_gider_OdemeTutari.clear()
+         ui.ln_gider_aciklama.clear()
+        #gelir clear
+         ui.ddm_gelir_yil.setCurrentIndex(0)
+         ui.ddm_gelir_ay.setCurrentIndex(0)
+         ui.ddm_gelir_gun.setCurrentIndex(0)
+         ui.ln_gelir_miktar.clear()
+         ui.ln_gelir_aciklama.clear()
+         #cansever clear
+         ui.ln_cansever_adSoyad.clear()
+         ui.ln_cansever_karsiTarafSigortaSirketi.clear()
+         ui.ln_cansever_policeNo.clear()
+         ui.ln_cansever_HK_DK.clear()
+         ui.ln_cansever_magdur_Plaka.clear()
+         ui.ln_cansever_karsi_taraf_plaka.clear()
+         ui.ln_cansever_kaza_tarihi.clear()
+         ui.ln_tahkim_basvurusundan_once_odeme_tutari.clear()
+         ui.ln_cansever_magdur_kusur_orani.clear()
+         ui.ln_cansever_sigorta_sirketine_basvuru_tarihi.clear()
+         ui.ln_cansever_basvuru_numarasi.clear()
+         ui.ln_cansever_tahkim_basvuru_tarihi.clear()
+         ui.ln_cansever_tahkim_basvuru_ucreti.clear()
+         ui.ln_cansever_bilirkisi_ucreti_ve_tarihi.clear()
+         ui.ln_cansever_aciklama.clear()
+         # Cukurova clear
+         ui.ln_cukurova_isim_soyisim.clear()
+         ui.ln_cukurova_sigortasirketi.clear()
+         ui.ln_cukurova_policeNo.clear()
+         ui.ln_cukurova_talepKonusu.clear()
+         ui.ln_cukurova_aracPlaka.clear()
+         ui.ln_cukurova_kazaTarihi.clear()
+         ui.ln_cukurova_karsiTarafPlakasi.clear()
+         ui.ln_cukurova_kusurOrani.clear()
+         ui.ln_cukurova_sigortayaBasvuruTarihi.clear()
+         ui.ln_cukurova_odemeTutari_tarihi.clear()
+         ui.ln_cukurova_stk_basvuru_numarasi.clear()
+         ui.ln_cukurova_stkbasvuruTarihi.clear()
+         ui.ln_cukurova_stk_basvuru_masrafi.clear()
+         ui.ln_cukurova_stk_bilirkisi.clear()
+         ui.ln_cukurova_aciklama.clear()
 
-# def lnleri_temizle():
-#     # Gider ekranındaki input alanlarını temizle
-#     try:
-#         ui.ln_gider_isim.clear()
-#         ui.ln_gider_tc.clear()
-#         ui.ln_gider_sigortasirketi.clear()
-#         ui.ln_gider_policeno.clear()
-#         ui.ln_gider_hkDk.clear()
-#         ui.ln_gider_magdurPlaka.clear()
-#         ui.ln_gider_OdemeTutari.clear()
-#         ui.ln_gider_STKbasvuruNo.clear()
-#         ui.ln_gider_STKUcreti.clear()
-#         ui.ln_gider_BilirkisiUcreti.clear()
-#         ui.ln_gider_Diger.clear()
-#         ui.ln_gider_aciklama.clear()
-#         ui.ln_gelir_miktar.clear()
-#         ui.ln_gelir_aciklama.clear()
-#         ui.ddm_gider_SirketSec.setCurrentIndex(0)
-#         ui.ddm_gider_kazaTarihi_yil.setCurrentIndex(0)
-#         ui.ddm_gider_kazaTarihi_ay.setCurrentIndex(0)
-#         ui.ddm_gider_kazaTarihi_gun.setCurrentIndex(0)
-#         ui.ddm_gider_stkBasvuruTarihi_yil.setCurrentIndex(0)
-#         ui.ddm_gider_stkBasvuruTarihi_ay.setCurrentIndex(0)
-#         ui.ddm_gider_stkBasvuruTarihi_gun.setCurrentIndex(0)
-#         ui.ddm_gelir_yil.setCurrentIndex(0)
-#         ui.ddm_gelir_ay.setCurrentIndex(0)
-#         ui.ddm_gelir_gun.setCurrentIndex(0)
 
-#     except Exception as e:
-#         print(e)
+
+
+
+     except Exception as e:
+         print(e)
 
 
 # Cansever Hukuk Başlangıç************************************************************************************************
@@ -519,7 +582,28 @@ def cansever_hukuk_tablo_olustur():
     except Exception as e:
         QMessageBox.critical(None, "Hata", f"Hata: {e}")
 
+import string
 
+def is_valid_input(text):
+    # İzin verilen özel karakterler listesi
+    allowed_characters = "/,'\"+"
+
+    # İzin verilen karakterler dışındaki tüm özel karakterler
+    special_characters = set(string.punctuation) - set(allowed_characters)
+
+    # Metindeki her bir karakter için kontrol yap
+    for char in text:
+        if char in special_characters:
+            return False
+
+    # Veritabanı komutlarını kontrol et
+    database_commands = ["SELECT", "INSERT", "UPDATE", "DELETE", "DROP", "ALTER", "CREATE"]
+    for command in database_commands:
+        if command.lower() in text.lower():
+            return False
+
+    # Metin geçerli ise True döndür
+    return True
 def cansever_kayit_ekle():
     cansever_hukuk_tablo_olustur()
     MagdurAracSahibiAdiSoyadi = ui.ln_cansever_adSoyad.text().strip()
@@ -543,6 +627,35 @@ def cansever_kayit_ekle():
         ui.ln_cansever_bilirkisi_ucreti_ve_tarihi.text().strip()
     )
     Aciklama = ui.ln_cansever_aciklama.text().strip()
+
+    # Girişlerin boş olup olmadığını kontrol et
+    if not all([MagdurAracSahibiAdiSoyadi,
+                KarsiTarafSigortaSirketi,
+                PoliceNumarasi,
+                MagdurAracPlaka,
+                KazaTarihi,
+                Aciklama]):
+        QMessageBox.critical(None, "Hata", "MagdurAracSahibiAdiSoyadi,KarsiTarafSigortaSirketi,PoliceNumarasi,MagdurAracPlaka,KazaTarihi,Aciklama Boş  bırakılamaz!")
+        return
+
+    # Kullanıcı girişlerini kontrol et
+    if not all(is_valid_input(input_str) for input_str in [MagdurAracSahibiAdiSoyadi,
+                                                           KarsiTarafSigortaSirketi,
+                                                           PoliceNumarasi,
+                                                           HasarFarkiDegerKaybiTalepKonusu,
+                                                           MagdurAracPlaka,
+                                                           KarsiTarafPlakasi,
+                                                           KazaTarihi,
+                                                           TahkimBasvurusundanOnceOdemeTutari,
+                                                           MagdurKusurOrani,
+                                                           SigortaSirketineBasvuruTarihi,
+                                                           TahkimBasvuruNumarasi,
+                                                           TahkimBasvuruTarihi,
+                                                           TahkimBasvuruUcreti,
+                                                           TahkimBilirkisiUcretiVeTarihi,
+                                                           Aciklama]):
+        QMessageBox.critical(None, "Hata", "Geçersiz karakter veya komut girişi.")
+        return
 
     tabloya_ekle = """INSERT INTO CanseverTablo (MagdurAracSahibiAdiSoyadi,
                                                 KarsiTarafSigortaSirketi,
@@ -586,8 +699,7 @@ def cansever_kayit_ekle():
         # lnleri_temizle()
     except Exception as e:
         QMessageBox.critical(None, "Hata", f"Hata: {e}")
-    cansever_kayit_listele()
-
+        cansever_kayit_listele()
 
 def cansever_kayit_listele():
     try:
@@ -685,7 +797,7 @@ def cansever_kayit_sil():
 
 
 # Silme işlemi tamamlandıktan sonra tabloyu güncelle
-cansever_kayit_listele()
+
 
 
 def cansever_arama():
@@ -790,6 +902,30 @@ def cukurova_kayit_ekle():
     STKBilirkisi = ui.ln_cukurova_stk_bilirkisi.text().strip()
     Aciklama = ui.ln_cukurova_aciklama.text().strip()
 
+    # Girişlerin boş olup olmadığını kontrol et
+    if not all([AracSahibiAdiSoyadiTC, SigortaSirketi, PoliceNumarasi, AracPlaka, KazaTarihi, Aciklama]):
+        QMessageBox.critical(None, "Hata", "AracSahibiAdiSoyadiTC,SigortaSirketi,PoliceNumarasi,AracPlaka,KazaTarihi,Aciklama boş bırakılamaz.")
+        return
+
+    # Kullanıcı girişlerini kontrol et
+    if not all(is_valid_input(input_str) for input_str in [AracSahibiAdiSoyadiTC,
+                                                           SigortaSirketi,
+                                                           PoliceNumarasi,
+                                                           TalepKonusu,
+                                                           AracPlaka,
+                                                           KazaTarihi,
+                                                           KarsiTarafPlakasi,
+                                                           KusurOrani,
+                                                           SigortayaBasvuruTarihi,
+                                                           OdemeTutariTarihi,
+                                                           STKBasvuruNumarasi,
+                                                           STKBasvuruTarihi,
+                                                           STKBasvuruMasrafi,
+                                                           STKBilirkisi,
+                                                           Aciklama]):
+        QMessageBox.critical(None, "Hata", "Geçersiz karakter veya komut girişi.")
+        return
+
     cukurova_tabloya_ekle = """INSERT INTO CukurovaTablo (AracSahibiAdiSoyadiTC,SigortaSirketi,PoliceNumarasi,TalepKonusu,AracPlaka,KazaTarihi,KarsiTarafPlakasi,KusurOrani,SigortayaBasvuruTarihi,
     OdemeTutariTarihi,STKBasvuruNumarasi,STKBasvuruTarihi,STKBasvuruMasrafi,STKBilirkisi,Aciklama) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
 
@@ -818,6 +954,7 @@ def cukurova_kayit_ekle():
         # lnleri_temizle()
     except Exception as e:
         QMessageBox.critical(None, "Hata", f"Hata: {e}")   
+
 
 def cukurova_kayit_listele():
     try:
