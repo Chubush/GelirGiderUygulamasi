@@ -52,14 +52,7 @@ def tarih_kontrol(yil, ay, gun):
     else:
         return True
 
-def aciklama_kontrol(text):
-    yasakli_kelimeler = ["%", "drop", "table", "delete"]
-    for kelime in yasakli_kelimeler:
-        if kelime in text.lower():
-            QMessageBox.critical(None, "Hata", f"{text} ifadesi yanlış başka bir ibare deneyin")
-        else:
-            return False    
-    return True
+
 
 def gider_kayit_ekle():
     gider_tablo_olustur()
@@ -75,8 +68,7 @@ def gider_kayit_ekle():
     tarih = Yil + "/" + Ay + "/" + Gun
 
     aciklama = ui.ln_gider_aciklama.text().strip()
-    if not aciklama_kontrol(aciklama):
-        return
+    
 
     odeme_tutari_input = ui.ln_gider_OdemeTutari.text().strip()
     if is_float(odeme_tutari_input) and float(odeme_tutari_input) >= 0:
@@ -294,8 +286,7 @@ def gelir_kayit_ekle():
         return
 
     gelir_aciklama = ui.ln_gelir_aciklama.text().strip()
-    if not aciklama_kontrol(gelir_aciklama):
-        return
+    
 
     tabloya_ekle = """INSERT INTO GelirTablo (Tarih, GelirMiktari, Aciklama) 
                     VALUES (?, ?, ?)"""
