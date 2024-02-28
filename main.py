@@ -410,7 +410,9 @@ def gelir_arama():
     # Gelir filtrelerinden ay ve yıl değerlerini al
     gelir_ay = ui.ddm_filtrele_gelir_ay.currentText().strip()
     gelir_yil = ui.ddm_filtrele_gelir_yil.currentText().strip()
+    
     gelir_tarih = gelir_yil + "/" + gelir_ay
+
 
     try:
         # Tabloyu temizle
@@ -1106,11 +1108,194 @@ def cukurova_run():
     cukurova_kayit_listele()
 
 
+#VakifBankası Kredi kartı giderleri
+    
+def vakif_tablo_olustur():
+    try:
+        tablo_olustur = """
+            CREATE TABLE IF NOT EXISTS VakifTablo(
+            ID INTEGER PRIMARY KEY AUTOINCREMENT,           
+            Tarih TEXT, 
+            OdemeMiktari REAL,
+            Aciklama TEXT
+            )"""
+        cursor.execute(tablo_olustur)
+        baglanti.commit()   
+    except Exception as e:
+        print(e)
+
+def vakif_kayit_ekle():
+    vakif_tablo_olustur()
+    yil = ui.ddm_vakif_yil_gir.currentText().strip()
+    ay = ui.ddm_vakif_ay_gir.currentText().strip()
+    gun = ui.ddm_vakif_gun_gir.currentText().strip()
+    if (
+        yil == "Yıl Gir".strip()
+        or ay == "Ay Gir".strip()
+        or gun == "Gün Gir".strip()
+    ):
+        QMessageBox.warning(None, "Uyarı", "Lütfen tüm tarih bilgilerini girin.")
+        return
+
+    tarih = f"{yil}/{ay}/{gun}"
+    odeme_miktari_input = ui.ln_vakif_odeme_miktari.text().strip()
+
+
+    aciklama = ui.ln_vakif_aciklama.text().strip()
+
+    if is_float(odeme_miktari_input) and float(odeme_miktari_input) >= 0:
+        odeme_miktari = float(odeme_miktari_input)
+    else:
+        QMessageBox.warning(
+            None, "Uyarı", "Hata: OdemeTutari değeri sayısal ve pozitif olmalıdır."
+        )
+        return
+
+    tabloya_ekle = "INSERT INTO VakifTablo(Tarih, OdemeMiktari, Aciklama) VALUES (?, ?, ?)"
+    veri_tuple = (tarih, odeme_miktari, aciklama)
+
+    try:
+        cursor.execute(tabloya_ekle, veri_tuple)
+        baglanti.commit()
+        QMessageBox.information(None, "Başarılı", "Kayıt eklendi.")
+        vakif_listele()
+        lnleri_temizle()
+    except Exception as e:
+        QMessageBox.critical(None, "Hata", f"Hata: {e}")
+
+def vakif_listele():
+    ui.tbl_vakif.clearContents()
+    ui.tbl_vakif.setRowCount(0)
+    toplam = 0  # toplam değişkenini burada tanımlayın
+    try:
+        cursor.execute("SELECT * FROM VakifTablo")
+        veriler = cursor.fetchall()
+
+        for row_number, row_data in enumerate(veriler):
+            ui.tbl_vakif.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                ui.tbl_vakif.setItem(row_number, column_number, QTableWidgetItem(str(data)))
+                # OdemeMiktari sütunundaki miktarları toplam değişkenine ekle
+                if column_number == 2:
+                    toplam += float(data)
+    except Exception as e:
+        print(e)
+
+    ui.ln_toplam_vakif.setText(str(toplam))
+
+    ui.tbl_vakif.setHorizontalHeaderLabels(
+        [
+            "ID",
+            "Tarih",
+            "Odeme Miktari",
+            "Aciklama"
+        ]
+    )
+
+
+
+def vakif_kayit_sil():
+    selected_row = ui.tbl_vakif.currentRow()
+
+    if selected_row >= 0:
+        id_item = ui.tbl_vakif.item(selected_row, 0)  # ID öğesini al
+        if id_item is not None:
+            record_id = id_item.text()  # Seçili satırın ID'sini al
+            confirm_dialog = QMessageBox.question(
+                None,
+                "Silme İşlemi",
+                f"Silmek İstediğinize emin misiniz\nID {record_id} olan kayıt silinecek",
+                QMessageBox.Yes | QMessageBox.No,
+            )
+            if confirm_dialog == QMessageBox.Yes:
+                try:
+                    cursor.execute("DELETE FROM VakifTablo WHERE ID=?", (record_id,))
+                    baglanti.commit()
+                    QMessageBox.information(
+                        None,
+                        "Başarılı",
+                        f"ID {record_id} olan kayıt başarıyla silindi"
+                    )
+                    vakif_listele()
+                except Exception as e:
+                    QMessageBox.critical(None, "Hata", f"Hata: {e}")
+            else:
+                return  # Silme işlemi iptal edildi
+        else:
+            QMessageBox.warning(None, "Uyarı", "Seçilen satırın ID değeri bulunamadı.")
+    else:
+        QMessageBox.warning(None, "Uyarı", "Lütfen silinecek bir kayıt seçin.")
+  
+def vakif_arama():
+    # Arama metnini al
+    arama_metni = ui.ln_vakif_arama.text().strip().lower()
+
+    # Filtrelenmiş yıl ve ayı al
+    vakif_yil = ui.ddm_filtrele_vakif_yil.currentText().strip()
+    vakif_ay = ui.ddm_filtrele_vakif_ay.currentText().strip()
+    vakif_tarih = vakif_yil + "/" + vakif_ay
+
+    try:
+        # Tabloyu temizle
+        ui.tbl_vakif.clearContents()
+        ui.tbl_vakif.setRowCount(0)
+
+        # Veritabanından verileri çek ve filtrele
+        if arama_metni and vakif_tarih:
+            cursor.execute(
+                "SELECT * FROM VakifTablo WHERE LOWER(Tarih) LIKE ? AND (LOWER(Aciklama) LIKE ? OR OdemeMiktari = ?)",
+                ("%" + vakif_tarih + "%", "%" + arama_metni + "%", arama_metni),
+            )
+        elif arama_metni:
+            cursor.execute(
+                "SELECT * FROM VakifTablo WHERE LOWER(Aciklama) LIKE ? OR OdemeMiktari = ?",
+                ("%" + arama_metni + "%", arama_metni),
+            )
+        elif vakif_tarih:
+            cursor.execute(
+                "SELECT * FROM VakifTablo WHERE LOWER(Tarih) LIKE ?",
+                ("%" + vakif_tarih + "%",),
+            )
+        else:
+            vakif_listele()
+            return
+
+        veriler = cursor.fetchall()
+
+        # Toplam miktarı hesaplamak için bir değişken oluştur
+        toplam = 0
+
+        # Tabloya verileri ekle
+        for row_number, row_data in enumerate(veriler):
+            ui.tbl_vakif.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                ui.tbl_vakif.setItem(row_number, column_number, QTableWidgetItem(str(data)))
+                # OdemeMiktari sütunundaki miktarları toplam değişkenine ekle
+                if column_number == 2:
+                    toplam += float(data)
+
+        # Toplamı ln_toplam_vakif içinde göster
+        ui.ln_toplam_vakif.setText(str(toplam))
+
+    except Exception as e:
+        QMessageBox.critical(None, "Hata", f"Hata: {e}")
+
+
+def vakif_run():
+    ui.tbl_vakif.horizontalHeader().setVisible(True)
+    ui.btn_vakif_ekle.clicked.connect(vakif_kayit_ekle)
+    ui.btn_vakif_sil.clicked.connect(vakif_kayit_sil)
+    ui.btn_vakif_ara.clicked.connect(vakif_arama)
+    vakif_listele()
+
+     
+
 # Runner
 gider_run()
 gelir_run()
 cansever_run()
 cukurova_run()
+vakif_run()
 
 ui.page_yenile.clicked.connect(page)
 # Uygulamayı başlat
