@@ -183,30 +183,44 @@ def gider_kayit_sil():
 
 def gider_arama():
     # Arama metnini al
-    arama_metni = (
-        ui.ln_gider_Ara.text().strip().lower()
-    )  # Küçük harfe dönüştür ve boşlukları sil
+    arama_metni = ui.ln_gider_Ara.text().strip().lower()
 
-    # Arama metni boşsa, tüm kayıtları göster ve toplamı güncelle
-    if not arama_metni:
-        gider_listele()
-        return
-
-    # Tabloyu temizle
-    ui.tbl_gider.clearContents()
-    ui.tbl_gider.setRowCount(0)
+    # Gider filtrelerinden ay ve yıl değerlerini al
+    gider_ay = ui.ddm_gider_filtrele_ay.currentText().strip()
+    gider_yil = ui.ddm_gider_filtrele_yil.currentText().strip()
+    gider_tarih = gider_yil + "/" + gider_ay
 
     try:
-        # Veritabanından verileri çek
-        cursor.execute(
-            "SELECT * FROM GiderTablo WHERE LOWER(IsimSoyisim) LIKE ? OR LOWER(Tarih) LIKE ? OR LOWER(Aciklama) LIKE ? OR LOWER(OdemeTutari) LIKE ?",
-            ("%" + arama_metni + "%",)
-            * 4,  # 4 parametre için aynı arama metnini tekrarla
-        )
-        veriler = cursor.fetchall()
+        # Tabloyu temizle
+        ui.tbl_gider.clearContents()
+        ui.tbl_gider.setRowCount(0)
 
-        # Toplam spesifik gider miktarını hesaplamak için bir değişken oluştur
+        # Toplamı sıfırla
         toplam = 0
+
+        # Veritabanından verileri çek ve filtrele
+        if arama_metni and gider_tarih:
+            cursor.execute(
+                "SELECT * FROM GiderTablo WHERE LOWER(Tarih) LIKE ? AND (LOWER(IsimSoyisim) LIKE ? OR LOWER(Aciklama) LIKE ? OR LOWER(OdemeTutari) LIKE ?)",
+                ("%" + gider_tarih + "%",) + tuple(["%" + arama_metni + "%"] * 3),
+            )
+        elif arama_metni:
+            cursor.execute(
+                "SELECT * FROM GiderTablo WHERE LOWER(IsimSoyisim) LIKE ? OR LOWER(Aciklama) LIKE ? OR LOWER(OdemeTutari) LIKE ?",
+                tuple(["%" + arama_metni + "%"] * 3),
+            )
+        
+        elif gider_tarih:
+            cursor.execute(
+                "SELECT * FROM GiderTablo WHERE LOWER(Tarih) LIKE ?",
+                ("%" + gider_tarih + "%",),
+            )
+        else:
+            # Tarih yoksa ve arama metni boşsa bütün tabloyu göster
+            gider_listele()
+            return
+
+        veriler = cursor.fetchall()
 
         # Tabloya verileri ekle
         for row_number, row_data in enumerate(veriler):
@@ -215,16 +229,15 @@ def gider_arama():
                 ui.tbl_gider.setItem(
                     row_number, column_number, QTableWidgetItem(str(data))
                 )
-            # Son sütun, OdemeTutari değerlerini toplam değişkenine ekle
-            spesifik_toplam = row_data[2]  # OdemeTutari sütunu
-            toplam += spesifik_toplam
+                # Son sütun, OdemeTutari değerlerini toplam değişkenine ekle
+                if column_number == 2:  # OdemeTutari sütunu
+                    toplam += float(data)
 
         # Toplamı ln_gider_toplamView içinde göster
         ui.ln_gider_toplamView.setText(str(toplam))
 
     except Exception as e:
         QMessageBox.critical(None, "Hata", f"Hata: {e}")
-
 
 # gider Tab Run
 def gider_run():
@@ -392,29 +405,43 @@ def gelir_kayit_sil():
 
 def gelir_arama():
     # Arama metnini al
-    arama_metni = (
-        ui.ln_gelir_ara.text().strip().lower()
-    )  # Küçük harfe dönüştür ve boşlukları sil
+    arama_metni = ui.ln_gelir_ara.text().strip().lower()
 
-    # Arama metni boşsa, tüm kayıtları göster ve toplamı güncelle
-    if not arama_metni:
-        gelir_listele()
-        return
-
-    # Tabloyu temizle
-    ui.tbl_gelir.clearContents()
-    ui.tbl_gelir.setRowCount(0)
+    # Gelir filtrelerinden ay ve yıl değerlerini al
+    gelir_ay = ui.ddm_filtrele_gelir_ay.currentText().strip()
+    gelir_yil = ui.ddm_filtrele_gelir_yil.currentText().strip()
+    gelir_tarih = gelir_yil + "/" + gelir_ay
 
     try:
-        # Veritabanından verileri çek
-        cursor.execute(
-            "SELECT ID,Tarih, GelirMiktari, Aciklama FROM GelirTablo WHERE LOWER(Aciklama) LIKE ?",
-            ("%" + arama_metni + "%",),
-        )
-        veriler = cursor.fetchall()
+        # Tabloyu temizle
+        ui.tbl_gelir.clearContents()
+        ui.tbl_gelir.setRowCount(0)
 
-        # Toplam gelir miktarını hesaplamak için bir değişken oluştur
+        # Toplamı sıfırla
         toplam = 0
+
+        # Veritabanından verileri çek ve filtrele
+        if arama_metni and gelir_tarih:
+            cursor.execute(
+                "SELECT * FROM GelirTablo WHERE LOWER(Tarih) LIKE ? AND (LOWER(Aciklama) LIKE ?)",
+                ("%" + gelir_tarih + "%", "%" + arama_metni + "%"),
+            )
+        elif arama_metni:
+            cursor.execute(
+                "SELECT * FROM GelirTablo WHERE LOWER(Aciklama) LIKE ?",
+                ("%" + arama_metni + "%",),
+            )
+        elif gelir_tarih:
+            cursor.execute(
+                "SELECT * FROM GelirTablo WHERE LOWER(Tarih) LIKE ?",
+                ("%" + gelir_tarih + "%",),
+            )
+        else:
+            # Tarih yoksa ve arama metni boşsa bütün tabloyu göster
+            gelir_listele()
+            return
+
+        veriler = cursor.fetchall()
 
         # Tabloya verileri ekle
         for row_number, row_data in enumerate(veriler):
@@ -423,15 +450,16 @@ def gelir_arama():
                 ui.tbl_gelir.setItem(
                     row_number, column_number, QTableWidgetItem(str(data))
                 )
-            # GelirMiktari sütunundaki miktarları toplam değişkenine ekle
-            gelir_miktari = float(row_data[2])  # GelirMiktari sütunu (1. sütun)
-            toplam += gelir_miktari
+                # Son sütun, GelirMiktari değerlerini toplam değişkenine ekle
+                if column_number == 2:  # GelirMiktari sütunu
+                    toplam += float(data)
 
-        # Toplamı gelir_toplamview içinde göster
+        # Toplamı ln_toplam_gelir içinde göster
         ui.ln_toplam_gelir.setText(str(toplam))
 
     except Exception as e:
         QMessageBox.critical(None, "Hata", f"Hata: {e}")
+
 
 
 def gelir_run():
